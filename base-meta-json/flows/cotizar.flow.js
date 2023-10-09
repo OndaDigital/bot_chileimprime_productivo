@@ -9,7 +9,7 @@ const googelSheet = new GoogleSheetService(
 
 
 const flujoCalculo = require('./calculo.flow');
-const flujoFinalizar = require('./finalizar.flow');
+const flujoPromocionLocal = require('./promocionLocal.flow.js');
 
 module.exports = addKeyword(EVENTS.ACTION)
     .addAnswer('🔍 Cargando catálogo... 📔 Por favor, espera 🙏 ¡No escribas todavía!! ⏳ Esto puede tardar unos segundos... ⏱️',
@@ -35,16 +35,16 @@ module.exports = addKeyword(EVENTS.ACTION)
             if (matchedProducts.length === 1) {
                 flowDynamic(`Tu seleccionaste: ${matchedProducts[0]}`);
                 await state.update({servicio_seleccionado : matchedProducts[0]});
+
                 // Muestra el mensaje informativo de la promoción local
                 if (matchedProducts[0].includes('Promoción solo Local')) {
                     // Muestra el mensaje informativo de la promoción local
-                    await gotoFlow(flujoFinalizar);
-                    return;
+                    await gotoFlow(flujoPromocionLocal);
+                    
                 }
-
-
     
                 await gotoFlow(flujoCalculo);
+
             } else if (matchedProducts.length > 1) {
                 let message = 'Tienes varias opciones, por favor selecciona *una especificando el número*:\n\n';
                 matchedProducts.forEach((product, index) => {
@@ -70,11 +70,13 @@ module.exports = addKeyword(EVENTS.ACTION)
             const seleccionado = matchedProducts[parseInt(respuestaCliente) - 1];
             await state.update({servicio_seleccionado : seleccionado});
             console.log("Cliente seleccionó:", seleccionado);
+
+            // Muestra el mensaje informativo de la promoción local
             if (seleccionado.includes('Promoción solo Local')) {
-                // Muestra el mensaje informativo de la promoción local
-                await gotoFlow(flujoFinalizar);
-                return;
+                await gotoFlow(flujoPromocionLocal);
+                
             }
+
             await gotoFlow(flujoCalculo);
         } else {
             // Esto manejaría entradas no válidas del cliente, como letras o números fuera del rango

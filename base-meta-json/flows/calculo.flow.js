@@ -80,7 +80,7 @@ module.exports = addKeyword(EVENTS.ACTION)
         maximumFractionDigits: 0
     })}*\n
     🔥 *Precio Total*: ${precioFormateado}\n
-¿Desea agregar sellado u ojetillos? Si, No \n
+*¿Desea agregar sellado u ojetillos? Si/No* \n
     `);
 
     
