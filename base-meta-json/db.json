@@ -1,0 +1,334 @@
+[
+  {
+    "ref": "65c16a85-f103-418c-9f63-73cb6ac31797",
+    "keyword": "b17b5a9d38f0bac74c374c8d633990ea",
+    "answer": "Hola",
+    "options": {},
+    "from": "56937782810",
+    "refSerialize": "c22e4066d61d81721def9b25d8a397e8"
+  },
+  {
+    "ref": "ans_536463b1-98e3-47bb-9966-90a3430687a6",
+    "keyword": "key_25828e87-e9d4-46dd-b2cd-04bde7f41f67",
+    "answer": "🖨️ *COTIZADOR CHILEIMPRIME* 🖨️\nAhora podras subir tus archivos y cotizar en linea, de esta forma tomaremos tu pedido mucho mas rápido",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": false,
+      "child": null,
+      "delay": 200,
+      "idle": null,
+      "nested": [],
+      "keyword": {},
+      "callback": false
+    },
+    "refSerialize": "16568e25db3c454da6374b041969b6b9",
+    "from": "56937782810"
+  },
+  {
+    "ref": "ans_55e0c57c-bb58-4a5f-b8cf-80f14d11fbb7",
+    "keyword": "ans_536463b1-98e3-47bb-9966-90a3430687a6",
+    "answer": "👉 *1* Iniciar una cotización (Te mostramos el catalogo, validaremos las medidas, el diseño y gestionamos tu pedido)\n👉 *2* Horarios y dirección del local\n👉 *3* Mis pedidos *(No disponible aún)*\n👉 *4* Necesito orientación, tengo dudas con el archivo o formato\n👉 *5* Hablar con un ejecutivo (tiempo de respuesta de 1 a 2 horas)\n👉 Escribe *menu* en cualquier momento para volver a ver este menú ",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": true,
+      "child": null,
+      "delay": 800,
+      "idle": null,
+      "nested": [],
+      "keyword": {},
+      "callback": true
+    },
+    "refSerialize": "0f701545fddab5cfe6c42752bc9355e4",
+    "from": "56937782810"
+  },
+  {
+    "ref": "4af0746f-3386-4984-8914-bcf652efe627",
+    "keyword": "0f701545fddab5cfe6c42752bc9355e4",
+    "answer": "1",
+    "options": {},
+    "from": "56937782810",
+    "refSerialize": "290236b1d481a790a200ea6e94b2122a"
+  },
+  {
+    "ref": "ans_cbae2f31-4132-4119-b83f-e0f8fe0a3631",
+    "keyword": "key_b6ce1e5a-77be-4507-9422-d0d1cbca5fac",
+    "answer": "🔍 Cargando catálogo... 📔 Por favor, espera 🙏 ¡No escribas todavía!! ⏳ Esto puede tardar unos segundos... ⏱️",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": false,
+      "child": null,
+      "delay": 100,
+      "idle": null,
+      "nested": [],
+      "keyword": {},
+      "callback": true
+    },
+    "refSerialize": "44daf3d0d2c3e422e6acd1416d767ea2",
+    "from": "56937782810"
+  },
+  {
+    "ref": "ans_56934886-6374-4156-bed6-75561b9288a1",
+    "keyword": "ans_cbae2f31-4132-4119-b83f-e0f8fe0a3631",
+    "answer": "En base al catalogo, escribe en el chat el nombre del servicio para continuar (Solo puede ser 1)",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": true,
+      "child": null,
+      "delay": 12000,
+      "idle": null,
+      "nested": [],
+      "keyword": {},
+      "callback": true
+    },
+    "refSerialize": "64952cab9886e52f39b608033ebabb10",
+    "from": "56937782810"
+  },
+  {
+    "ref": "4b430b3c-d89e-4e41-aaf9-b46e8e7084c5",
+    "keyword": "64952cab9886e52f39b608033ebabb10",
+    "answer": "PVC",
+    "options": {},
+    "from": "56937782810",
+    "refSerialize": "07ec9310145efdc5e738fb68e3646784"
+  },
+  {
+    "ref": "bc637f88-1ecc-4e71-8a91-d40a632b7dd4",
+    "answer": "Tienes varias opciones, por favor selecciona una especificando el número:\n*1*. PVC Alta Definición\n*2*. PVC 11 Oz mt2\n*3*. Promoción PVC 13 Oz mt2\n*4*. PVC 13 Oz mt2\n*5*. PVC Blackout\n",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": false,
+      "delay": 0
+    },
+    "from": "56937782810",
+    "refSerialize": "7e11db8013128b0846369eac3ca2c301"
+  },
+  {
+    "ref": "ans_01ccd112-0c29-430d-9371-97c4ef4a7bf8",
+    "keyword": "ans_56934886-6374-4156-bed6-75561b9288a1",
+    "answer": "__capture_only_intended__",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": true,
+      "child": null,
+      "delay": 0,
+      "idle": null,
+      "nested": [],
+      "keyword": {},
+      "callback": true
+    },
+    "refSerialize": "45a0ed1b6a65a3d03a63d23e1207035a",
+    "from": "56937782810"
+  },
+  {
+    "ref": "e562fdda-d4ba-4a8f-a3ef-c32517de18fa",
+    "keyword": "45a0ed1b6a65a3d03a63d23e1207035a",
+    "answer": "3",
+    "options": {},
+    "from": "56937782810",
+    "refSerialize": "7af65864494b12f0f7ef00589f4d3979"
+  },
+  {
+    "ref": "ans_4658215e-3b23-41fb-9479-08cd4a6be158",
+    "keyword": "key_ccb0ddb6-97f5-4ec7-bf15-051d530a7a24",
+    "answer": "__call_action__",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": false,
+      "child": null,
+      "delay": 0,
+      "idle": null,
+      "nested": [],
+      "keyword": {},
+      "callback": true
+    },
+    "refSerialize": "dcc3527a40ebc07337e355cdfc30b332",
+    "from": "56937782810"
+  },
+  {
+    "ref": "e0f9f7a6-153c-42e3-bf05-eaa4ffc61154",
+    "answer": "A continuación tenemos los siguientes anchos disponbies para Promoción PVC 13 Oz mt2:\nMaterial: 1.07, Imprimible: 1\n",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": false,
+      "delay": 0
+    },
+    "from": "56937782810",
+    "refSerialize": "51df0c9415a3447dfeb07217893ea8aa"
+  },
+  {
+    "ref": "dc9b7095-12fa-4c6d-a3b6-39c369458977",
+    "answer": "Escoge la opción con el ancho deseado:\nA). 1 metros\n",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": false,
+      "delay": 0
+    },
+    "from": "56937782810",
+    "refSerialize": "88b3c6ac309530b482f9d1a4478f0f65"
+  },
+  {
+    "ref": "ans_dc5f7631-f83c-4bbe-97c5-f0055f6d399f",
+    "keyword": "ans_4658215e-3b23-41fb-9479-08cd4a6be158",
+    "answer": "__capture_only_intended__",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": true,
+      "child": null,
+      "delay": 0,
+      "idle": null,
+      "nested": [],
+      "keyword": {},
+      "callback": true
+    },
+    "refSerialize": "958d5797e09ddb4dcce453dbdfdf28c7",
+    "from": "56937782810"
+  },
+  {
+    "ref": "f51724a8-e88f-4329-9a18-90cc9abe2ac1",
+    "keyword": "958d5797e09ddb4dcce453dbdfdf28c7",
+    "answer": "A",
+    "options": {},
+    "from": "56937782810",
+    "refSerialize": "dda4ec89253a208a2baea334f5233f20"
+  },
+  {
+    "ref": "00bbcfcf-2900-4fcd-ba8d-3da4f84e22c5",
+    "answer": "Seleccionaste: *1* metros.\nAhora, por favor ingresa la altura en metros (ejemplo: 2.5):",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": false,
+      "delay": 0
+    },
+    "from": "56937782810",
+    "refSerialize": "df251bb13837b9173a95aadc978ed317"
+  },
+  {
+    "ref": "ans_12f4f88b-eca4-43dc-b326-f335b8d1cde5",
+    "keyword": "ans_dc5f7631-f83c-4bbe-97c5-f0055f6d399f",
+    "answer": "__capture_only_intended__",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": true,
+      "child": null,
+      "delay": 0,
+      "idle": null,
+      "nested": [],
+      "keyword": {},
+      "callback": true
+    },
+    "refSerialize": "a558e1fe5bc2b499641eaa844b57b251",
+    "from": "56937782810"
+  },
+  {
+    "ref": "dbd1b7fa-fc8c-4c3a-b115-f6b43ce9454b",
+    "keyword": "a558e1fe5bc2b499641eaa844b57b251",
+    "answer": "10",
+    "options": {},
+    "from": "56937782810",
+    "refSerialize": "2e513caa004a660c57950b9691449f17"
+  },
+  {
+    "ref": "a6452f2e-c7de-47ea-a5b1-acebe4535295",
+    "answer": "\n    *📄 COTIZACIÓN FINALIZADA*\n\n    📏 *Dimensiones:*\n    - Ancho: *1 metros*\n    - Altura: *10 metros*\n\n    🛍️ *Servicio*: *Promoción PVC 13 Oz mt2*\n\n    💰 *Precio por metro*: *$3.000*\n\n    🔥 *Precio Total*: $30.000\n\n¿Desea agregar sellado u ojetillos? Si, No \n\n    ",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": false,
+      "delay": 0
+    },
+    "from": "56937782810",
+    "refSerialize": "b4ac92426b0edba591f22e6578046cd2"
+  },
+  {
+    "ref": "ans_e9440733-3bf6-4730-a14c-8629d06580da",
+    "keyword": "key_be545c31-58ea-4fbc-aebb-396f14aae8d2",
+    "answer": "__call_action__",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": false,
+      "child": null,
+      "delay": 0,
+      "idle": null,
+      "nested": [],
+      "keyword": {},
+      "callback": true
+    },
+    "refSerialize": "4777f93c6423d59fe3f6830ed60529d5",
+    "from": "56937782810"
+  },
+  {
+    "ref": "ans_d22811b8-23bd-4075-b0f0-cfd98ff99a52",
+    "keyword": "ans_e9440733-3bf6-4730-a14c-8629d06580da",
+    "answer": "__capture_only_intended__",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": true,
+      "child": null,
+      "delay": 0,
+      "idle": null,
+      "nested": [],
+      "keyword": {},
+      "callback": true
+    },
+    "refSerialize": "00457bf31ceef86edc0855d476ff3892",
+    "from": "56937782810"
+  },
+  {
+    "ref": "0f019b18-e5f8-4ac2-9c45-fa2fddde8037",
+    "keyword": "00457bf31ceef86edc0855d476ff3892",
+    "answer": "Hola",
+    "options": {},
+    "from": "56937782810",
+    "refSerialize": "c22e4066d61d81721def9b25d8a397e8"
+  },
+  {
+    "ref": "ans_536463b1-98e3-47bb-9966-90a3430687a6",
+    "keyword": "key_25828e87-e9d4-46dd-b2cd-04bde7f41f67",
+    "answer": "🖨️ *COTIZADOR CHILEIMPRIME* 🖨️\nAhora podras subir tus archivos y cotizar en linea, de esta forma tomaremos tu pedido mucho mas rápido",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": false,
+      "child": null,
+      "delay": 200,
+      "idle": null,
+      "nested": [],
+      "keyword": {},
+      "callback": false
+    },
+    "refSerialize": "16568e25db3c454da6374b041969b6b9",
+    "from": "56937782810"
+  },
+  {
+    "ref": "ans_55e0c57c-bb58-4a5f-b8cf-80f14d11fbb7",
+    "keyword": "ans_536463b1-98e3-47bb-9966-90a3430687a6",
+    "answer": "👉 *1* Iniciar una cotización (Te mostramos el catalogo, validaremos las medidas, el diseño y gestionamos tu pedido)\n👉 *2* Horarios y dirección del local\n👉 *3* Mis pedidos *(No disponible aún)*\n👉 *4* Necesito orientación, tengo dudas con el archivo o formato\n👉 *5* Hablar con un ejecutivo (tiempo de respuesta de 1 a 2 horas)\n👉 Escribe *menu* en cualquier momento para volver a ver este menú ",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": true,
+      "child": null,
+      "delay": 800,
+      "idle": null,
+      "nested": [],
+      "keyword": {},
+      "callback": true
+    },
+    "refSerialize": "0f701545fddab5cfe6c42752bc9355e4",
+    "from": "56937782810"
+  }
+]
