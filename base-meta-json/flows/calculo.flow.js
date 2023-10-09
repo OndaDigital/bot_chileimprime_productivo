@@ -17,21 +17,14 @@ module.exports = addKeyword(EVENTS.ACTION)
     const servicio_seleccionado = state.get('servicio_seleccionado');
     const medidas = await googelSheet.consultarMedidasDisponibles(servicio_seleccionado);
 
-    let mensaje = `A continuación tenemos los siguientes anchos disponbies para ${servicio_seleccionado}:\n`;
-    let anchosImprimibles = medidas.slice(1).map(medida => {
-        mensaje += `Material: ${medida.material}, Imprimible: ${medida.imprimible}\n`;
-        return medida.imprimible;
-    });
-
+    let anchosImprimibles = medidas.slice(1).map(medida => medida.imprimible);
     await state.update({ anchosImprimibles: anchosImprimibles });
-    await flowDynamic(mensaje);
 
-    let mensaje_seleccion = "Escoge la opción con el ancho deseado:\n";
+    let mensaje_seleccion = `Para *${servicio_seleccionado}* selecciona la letra con el *ancho que deseas imprimir* y ten en cuenta el ancho total del rollo:\n\n`;
     anchosImprimibles.forEach((ancho, index) => {
-        mensaje_seleccion += `${LETRAS[index]}). ${ancho} metros\n`;
+        mensaje_seleccion += `*${LETRAS[index]}.* ${ancho} metros 🖨️ (_ancho total ${medidas[index + 1].material}m)_\n`;
     });
-    await flowDynamic(mensaje_seleccion);
-    
+    await flowDynamic(mensaje_seleccion);    
 })
 .addAction({ capture: true }, async (ctx, { state, flowDynamic, fallBack, gotoFlow }) => {
     const opcionSeleccionada = ctx.body.toUpperCase();
@@ -45,7 +38,7 @@ module.exports = addKeyword(EVENTS.ACTION)
 
     const anchoSeleccionado = anchosImprimibles[indexSeleccionado];
     await state.update({ anchoSeleccionado: anchoSeleccionado });
-    const mensaje = `Seleccionaste: *${anchoSeleccionado}* metros.\nAhora, por favor ingresa la altura en metros (ejemplo: 2.5):`;
+    const mensaje = `Seleccionaste: *${anchoSeleccionado} metros de ancho.*\n\nAhora, por favor *ingresa la altura en metros*\n(Solo debes ingresar el numero, ejemplo: *2.5*):`;
     await flowDynamic(mensaje);
 })
 .addAction({ capture: true }, async (ctx, { state, flowDynamic, fallBack, gotoFlow }) => {

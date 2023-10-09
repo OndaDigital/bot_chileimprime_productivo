@@ -10,12 +10,12 @@ module.exports = addKeyword(['Hola', 'Menu',])
     {delay:200})
     .addAnswer(
         [            
-            '👉 *1* Iniciar una cotización (Te mostramos el catalogo, validaremos las medidas, el diseño y gestionamos tu pedido)',
-            '👉 *2* Horarios y dirección del local',
-            '👉 *3* Mis pedidos *(No disponible aún)*',
-            '👉 *4* Necesito orientación, tengo dudas con el archivo o formato',
-            '👉 *5* Hablar con un ejecutivo (tiempo de respuesta de 1 a 2 horas)',
-            '👉 Escribe *menu* en cualquier momento para volver a ver este menú ',
+            '👉 *1.* Iniciar una cotización (Te mostramos el catalogo, validaremos las medidas, el diseño y gestionamos tu pedido)',
+            '👉 *2.* Horarios y dirección del local',
+            '👉 *3.* Mis pedidos *(No disponible aún)*',
+            '👉 *4.* Necesito orientación, tengo dudas con el archivo o formato',
+            '👉 *5.* Hablar con un ejecutivo (tiempo de respuesta de 1 a 2 horas)',
+            '📌 Escribe *menu* en cualquier momento para volver a ver este menú ',
         ], 
     {delay:800, capture:true},async (ctx, { provider, flowDynamic, fallBack,gotoFlow}) => {
         const respuesta = ctx.body;
