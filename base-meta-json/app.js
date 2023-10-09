@@ -13,7 +13,7 @@ const flujoPromocionLocal = require('./flows/promocionLocal.flow.js');
 
 const main = async () => {
     const adapterDB = new JsonFileAdapter()
-    const adapterFlow = createFlow([flujoPrincipal, flujoCotizar,flujoCalculo, flujoIndicaciones,flujoPromocionLocal])
+    const adapterFlow = createFlow([flujoPrincipal, flujoCotizar,flujoCalculo, flujoIndicaciones, flujoPromocionLocal, flujoFinalizar])
 
     const adapterProvider = createProvider(MetaProvider, {
         jwtToken: 'EAAOqAf57coUBO6ca3xDX7Jd59dLNWP1nIZCXYUrhGuFRJ6E9BETKakAf0jdpZCzXljTYlKLsZAa2ZBoxThRIahimSGa3l3ErQ14NyKMYzALrBpO1ncbOrbI4YYVgIOxkngzHvAQVXq2xR3oIIVNOXBzQCCtVv2qHQAFFZCSXlAnBGcarphLGgLympg4yTVI4u',

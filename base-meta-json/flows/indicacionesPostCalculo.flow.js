@@ -5,7 +5,7 @@ const googelSheet = new GoogleSheetService("1zFKxknp8KJq5UgSDnNG9awr-HLEwZIdbb6j
 const flujoFinalizar = require('./finalizar.flow');
 
 module.exports = addKeyword(EVENTS.ACTION)
-.addAction({capture:true},async (ctx, {state, flowDynamic}) => {
+.addAction({capture:true},async (ctx, {state, flowDynamic,gotoFlow}) => {
     const anchoSeleccionado = parseFloat(state.get('anchoSeleccionado'));
     const alturaSeleccionada = parseFloat(state.get('alturaSeleccionada'));
     const anchoCm = (anchoSeleccionado * 100).toFixed(0);

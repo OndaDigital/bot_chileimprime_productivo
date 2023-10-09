@@ -119,7 +119,7 @@ consultarMedidasDisponibles = async (nombreProducto) => {
   await this.doc.loadInfo();
   const sheet = this.doc.sheetsByIndex[0];
   await sheet.loadCells('A1:AO60');
-  let categoriasEspeciales = ['Banderas', 'Back Light', 'Adhesivos'];
+  let categoriasEspeciales = ['Banderas', 'Back Light', 'Adhesivos', 'Adhesivo Vehicular'];
   let buscarPor = nombreProducto;
 
   // Identificar la categoría del producto seleccionado
@@ -139,7 +139,7 @@ consultarMedidasDisponibles = async (nombreProducto) => {
   }
 
   console.log('Buscar por:', buscarPor);
-
+  console.log('Categoria producto:', categoriaProducto);
   // Buscar la tabla a partir de la columna M que tenga el nombre `buscarPor`.
   for (let j = 12; j < sheet.columnCount && j <= 40; j++) {
       for (let rowIndex = 0; rowIndex < 60; rowIndex++) {

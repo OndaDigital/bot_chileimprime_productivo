@@ -29,7 +29,7 @@ module.exports = addKeyword(['Hola', 'Menu',])
                 //console.log(ctx);
                 
 
-                return gotoFlow(flujoCotizar);
+                await gotoFlow(flujoCotizar);
                 
             }
             else if(respuesta === '2'){

@@ -22,7 +22,7 @@ module.exports = addKeyword(EVENTS.ACTION)
 
     let mensaje_seleccion = `Para *${servicio_seleccionado}* selecciona la letra con el *ancho que deseas imprimir* y ten en cuenta el ancho total del rollo:\n\n`;
     anchosImprimibles.forEach((ancho, index) => {
-        mensaje_seleccion += `*${LETRAS[index]}.* ${ancho} metros 🖨️ (_ancho total ${medidas[index + 1].material}m)_\n`;
+        mensaje_seleccion += `*${LETRAS[index]}.* ${ancho} metros 🖨️ ( _ancho total ${medidas[index + 1].material}m_ )\n`;
     });
     await flowDynamic(mensaje_seleccion);    
 })
@@ -38,7 +38,7 @@ module.exports = addKeyword(EVENTS.ACTION)
 
     const anchoSeleccionado = anchosImprimibles[indexSeleccionado];
     await state.update({ anchoSeleccionado: anchoSeleccionado });
-    const mensaje = `Seleccionaste: *${anchoSeleccionado} metros de ancho.*\n\nAhora, por favor *ingresa la altura en metros*\n(Solo debes ingresar el numero, ejemplo: *2.5*):`;
+    const mensaje = `Seleccionaste: *${anchoSeleccionado} metros de ancho.*\n\nAhora, por favor *ingresa la altura en metros*\n(Ingresar un numero: ejemplo: *2.5*):`;
     await flowDynamic(mensaje);
 })
 .addAction({ capture: true }, async (ctx, { state, flowDynamic, fallBack, gotoFlow }) => {
