@@ -110,14 +110,15 @@ async hasStock(nombreProducto) {
   }
 };
 
-
+/**
+ * Obtener las medidas disponibles de un producto.
+ * @param {string} nombreProducto - El nombre del producto.
+ * @returns {Array<Object>} - Retorna una lista de objetos con las propiedades "material" e "imprimible".
+ */
 consultarMedidasDisponibles = async (nombreProducto) => {
-
   await this.doc.loadInfo();
-
   const sheet = this.doc.sheetsByIndex[0];
   await sheet.loadCells('A1:AO60');
-
   let categoriasEspeciales = ['Banderas', 'Back Light', 'Adhesivos'];
   let buscarPor = nombreProducto;
 
@@ -138,25 +139,32 @@ consultarMedidasDisponibles = async (nombreProducto) => {
   }
 
   console.log('Buscar por:', buscarPor);
-  console.log('Categoria :', categoriaProducto);
+
   // Buscar la tabla a partir de la columna M que tenga el nombre `buscarPor`.
   for (let j = 12; j < sheet.columnCount && j <= 40; j++) {
-      const cell = sheet.getCell(0, j);
-      if (cell.value === buscarPor) {
-          let medidas = [];
-          let rowIndex = 1;
-          while (sheet.getCell(rowIndex, j).value !== null && rowIndex < 60) {
-              let material = sheet.getCell(rowIndex, j).value;
-              let imprimible = sheet.getCell(rowIndex, j + 1).value;
-              if (material && imprimible) medidas.push({ material, imprimible });
-              rowIndex++;
+      for (let rowIndex = 0; rowIndex < 60; rowIndex++) {
+          const cell = sheet.getCell(rowIndex, j);
+          if (cell.value === buscarPor) {
+              let medidas = [];
+              let measureIndex = rowIndex + 1;
+              while (sheet.getCell(measureIndex, j).value !== null && measureIndex < 60) {
+                  let material = sheet.getCell(measureIndex, j).value;
+                  let imprimible = sheet.getCell(measureIndex, j + 1).value;
+                  if (material && imprimible) medidas.push({ material, imprimible });
+                  measureIndex++;
+              }
+              console.log('Medidas encontradas:', medidas);
+              return medidas;
           }
-          //console.log('Medidas encontradas:', medidas);
-          return medidas;
       }
   }
   return [];
 }
+
+
+  
+
+
 
 
 /**
