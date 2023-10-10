@@ -3,6 +3,7 @@ const { createBot, createProvider, createFlow, addKeyword, EVENTS } = require('@
 const MetaProvider = require('@bot-whatsapp/provider/meta')
 const JsonFileAdapter = require('@bot-whatsapp/database/json')
 
+const flujoUnidad = require('./flows/unidad.flow');
 const flujoCotizar = require('./flows/cotizar.flow');
 const flujoPrincipal = require('./flows/bienvenida.flow')
 const flujoCalculo = require('./flows/calculo.flow');
@@ -13,7 +14,8 @@ const flujoPromocionLocal = require('./flows/promocionLocal.flow.js');
 
 const main = async () => {
     const adapterDB = new JsonFileAdapter()
-    const adapterFlow = createFlow([flujoPrincipal, flujoCotizar,flujoCalculo, flujoIndicaciones, flujoPromocionLocal, flujoFinalizar])
+    const adapterFlow = createFlow([flujoPrincipal, flujoCotizar, flujoCalculo, flujoIndicaciones, flujoPromocionLocal, flujoFinalizar
+        , flujoUnidad])
 
     const adapterProvider = createProvider(MetaProvider, {
         jwtToken: 'EAAOqAf57coUBO6ca3xDX7Jd59dLNWP1nIZCXYUrhGuFRJ6E9BETKakAf0jdpZCzXljTYlKLsZAa2ZBoxThRIahimSGa3l3ErQ14NyKMYzALrBpO1ncbOrbI4YYVgIOxkngzHvAQVXq2xR3oIIVNOXBzQCCtVv2qHQAFFZCSXlAnBGcarphLGgLympg4yTVI4u',
