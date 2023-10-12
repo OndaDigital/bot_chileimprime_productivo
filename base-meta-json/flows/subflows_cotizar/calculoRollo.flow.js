@@ -1,48 +1,28 @@
-const GoogleSheetService = require( "../services/GoogleSheetService");
-const chatgpt = require('../services/chatgpt.js');
+const GoogleSheetService = require( "../../services/GoogleSheetService");
 
-const {addKeyword, EVENTS} = require('@bot-whatsapp/bot')
+const {addKeyword, EVENTS} = require("@bot-whatsapp/bot");
 
 const googelSheet = new GoogleSheetService(
     "1zFKxknp8KJq5UgSDnNG9awr-HLEwZIdbb6jZlQkuwtk"
   );
-
-const flujoUnidad = require('./unidad.flow');
-const flujoFinalizar = require('./finalizar.flow');
-const flujoIndicaciones = require('./indicacionesPostCalculo.flow').default;
-
-
-
-const LETRAS = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "Ñ", "O", "P", "Q"]; // y así sucesivamente
+  const LETRAS = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "Ñ", "O", "P", "Q"]; // y así sucesivamente
+const flujoSubirPedido = require('./subirPedido.flow');
 
 module.exports = addKeyword(EVENTS.ACTION)
 .addAction(async (ctx, {state, provider, flowDynamic, fallBack, gotoFlow}) => {
     const servicio_seleccionado = state.get('servicio_seleccionado');
     const medidas = await googelSheet.consultarMedidasDisponibles(servicio_seleccionado);
-    
-    
-    const tipo_producto = await googelSheet.obtenerTipoPorNombre(servicio_seleccionado);
-    console.log(`Tipo: ${tipo_producto}`);
-    //Si es un producto de tipo Rollo se lanza un flujo mas simple
-    if(tipo_producto === 'Unidad')
-    {
-        await gotoFlow(flujoUnidad);
-        return;
-    }
-    else
-    {
+    let anchosImprimibles = medidas.slice(1).map(medida => medida.imprimible);
+    await state.update({ anchosImprimibles: anchosImprimibles });
 
-        let anchosImprimibles = medidas.slice(1).map(medida => medida.imprimible);
-        await state.update({ anchosImprimibles: anchosImprimibles });
-
-        let mensaje_seleccion = `Para *${servicio_seleccionado}* selecciona la letra con el *ancho que deseas imprimir* y ten en cuenta el ancho total del rollo:\n\n`;
-        anchosImprimibles.forEach((ancho, index) => {
-            mensaje_seleccion += `*${LETRAS[index]}.* ${ancho} metros 🖨️ ( _ancho total ${medidas[index + 1].material}m_ )\n`;
-        });
-        await flowDynamic(mensaje_seleccion);    
-    }
+    let mensaje_seleccion = `Para *${servicio_seleccionado}* selecciona la letra con el *ancho que deseas imprimir* y ten en cuenta el ancho total del rollo:\n\n`;
+    anchosImprimibles.forEach((ancho, index) => {
+        mensaje_seleccion += `*${LETRAS[index]}.* ${ancho} metros 🖨️ ( _ancho total ${medidas[index + 1].material}m_ )\n`;
+    });
+     await flowDynamic(mensaje_seleccion);  
 })
 .addAction({ capture: true }, async (ctx, { state, flowDynamic, fallBack, gotoFlow }) => {
+
     const opcionSeleccionada = ctx.body.toUpperCase();
     const anchosImprimibles = state.get('anchosImprimibles');
     const indexSeleccionado = LETRAS.indexOf(opcionSeleccionada);
@@ -81,7 +61,7 @@ module.exports = addKeyword(EVENTS.ACTION)
     await state.update({ precioPorMetro: precioPorMetro });
 
     // Saltamos la información detallada de la cotización y pasamos directamente a la pregunta
-    await flowDynamic(`*¿Deseas agregar sellado o sellado y ojetillos?* 
+    await flowDynamic(`*¿Deseas agregar alguna terminación adicional?* 
      A. Sellado
      B. Sellado y ojetillos
      C. No \n
@@ -196,7 +176,7 @@ Puedes ajustar los DPI de tu diseño para mejorar la calidad de impresión. A ma
 
 Con eso en mente, ¿qué deseas hacer a continuación?
 
-1. 📤 Subir el archivo por aquí y finalizar la cotización.
+1. 📤 Subir el archivo por aquí y finalizar la cotización. (No disponible)
 2. 📍 Venir a la tienda a finalizar la cotización pero con el archivo.
 3. 📧 Enviar el archivo por correo.
 4. 💼 Solicitar a nuestro diseñador un diseño por $15.000.`);
@@ -206,10 +186,13 @@ Con eso en mente, ¿qué deseas hacer a continuación?
     const opcionSeleccionada = ctx.body;
     switch (opcionSeleccionada) {
         case "1":
-            await gotoFlow(flujoIndicaciones);
+            await fallBack("Estamos trabajando en esta caracteristica, intenta con otra opción (2, 3 o 4).");
             break;
         case "2":
             await flowDynamic("Perfecto, recuerda venir con tu diseño a la siguiente dirección:\n📍 *Av. El Parrón 579, La Cisterna* \n🕐 *Horarios de atención:* Lunes a sábados de 10am hasta las 18:00hrs.\nCorreo: chileimprime13.cl\nSitio web: chileimprime.cl");
+            //await flowDynamic("Ahora  puedes subir tu diseño a la siguiente dirección: https://chileimprime.cl/subir-archivo/");
+            await flowDynamic("Perfecto, tu orden ha sido subida a nuestro sistema, solo debes venir a la tienda con tu diseño, tienes 24 horas desde iniciada esta cotizacion");
+            return await gotoFlow(flujoSubirPedido);
             break;
         case "3":
             await flowDynamic("Perfecto, envía tu diseño a chileimprime13@gmail.com y envia los detalles de tu cotización. te responderemos a la brevedad.");
@@ -218,7 +201,7 @@ Con eso en mente, ¿qué deseas hacer a continuación?
             await fallBack("Nuestro diseñador no se encuentra disponible en este momento. Por favor, seleccona otra opción.");
             return;
         default:
-            await fallBack("Opción no válida. Por favor, selecciona una opción de la lista (1, 2, 3 o 4).");
+            await fallBack("Opción no válida. Por favor, selecciona una opción de la lista (2, 3 o 4).");
             return;
     }
 });

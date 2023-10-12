@@ -8,8 +8,9 @@ const googelSheet = new GoogleSheetService(
   );
 
 
-const flujoCalculo = require('./calculo.flow');
-const flujoPromocionLocal = require('./promocionLocal.flow.js');
+const flujoCalculo = require('./subflows_cotizar/calculo.flow');
+const flujoPromocionLocal = require('./subflows_cotizar/promocionLocal.flow.js');
+const flujoUnidad = require('./subflows_cotizar/calculoUnidad.flow');
 
 module.exports = addKeyword(EVENTS.ACTION)
     .addAnswer('🔍 Cargando catálogo... 📔 Por favor, espera 🙏 ¡No escribas todavía!! ⏳ Esto puede tardar unos segundos... ⏱️',
@@ -22,7 +23,7 @@ module.exports = addKeyword(EVENTS.ACTION)
     })
     .addAnswer('En base al catalogo, escribe en el chat el nombre del servicio para continuar (Solo puede ser 1)', 
     {delay:12000, capture:true},
-    async (ctx, { state, flowDynamic, fallBack, gotoFlow}) => {
+    async (ctx, { state, flowDynamic, fallBack, gotoFlow, endFlow}) => {
         await state.update({servicios_cliente : ctx.body})
     
         try {
@@ -31,21 +32,27 @@ module.exports = addKeyword(EVENTS.ACTION)
             const rawRespuestaCliente = state.get('servicios_cliente');
             const cleanedItem = cleanInput(rawRespuestaCliente.trim());
             const matchedProducts = findBestMatches(cleanedItem, productNames);
+            
         
             if (matchedProducts.length === 1) {
                 flowDynamic(`Tu seleccionaste: ${matchedProducts[0]}`);
                 await state.update({servicio_seleccionado : matchedProducts[0]});
 
+                
+                
+            
                 // Muestra el mensaje informativo de la promoción local
-                if (matchedProducts[0].includes('Promoción solo Local')) {
+                if (matchedProducts[0].includes('Promoción solo Local')) {                    
                     // Muestra el mensaje informativo de la promoción local
                     await gotoFlow(flujoPromocionLocal);
                     
                 }
     
                 await gotoFlow(flujoCalculo);
+                
+                
 
-            } else if (matchedProducts.length > 1) {
+            } else if (matchedProducts.length > 1) {                
                 let message = 'Tienes varias opciones, por favor selecciona *una especificando el número*:\n\n';
                 matchedProducts.forEach((product, index) => {
                     message += `*${index + 1}*. ${product}\n`;

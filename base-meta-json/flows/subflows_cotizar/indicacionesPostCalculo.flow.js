@@ -1,5 +1,5 @@
 const { addKeyword, EVENTS } = require('@bot-whatsapp/bot');
-const flujoFinalizar = require('./finalizar.flow');
+const flujoFinalizar = require('../finalizar.flow');
 
 module.exports = addKeyword(EVENTS.ACTION)
 .addAction(async (ctx, { state, provider, flowDynamic, fallBack, gotoFlow }) => {
