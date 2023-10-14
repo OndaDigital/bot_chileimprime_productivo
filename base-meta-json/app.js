@@ -12,13 +12,16 @@ const flujoFinalizar = require('./flows/finalizar.flow');
 const flujoIndicaciones = require('./flows/subflows_cotizar/indicacionesPostCalculo.flow.js');
 const flujoPromocionLocal = require('./flows/subflows_cotizar/promocionLocal.flow.js');
 const flujoSubirPedido = require('./flows/subflows_cotizar/subirPedido.flow');
+const flujoEjecutivo = require('./flows/ejecutivoFlow');
+const ServerHttp = require('./http/index.js');
 
 
 
-const main = async () => {
+const main = async () => {    
+
     const adapterDB = new JsonFileAdapter()
-    const adapterFlow = createFlow([flujoPrincipal, flujoCotizar, flujoCalculo, flujoIndicaciones, flujoPromocionLocal, flujoFinalizar
-        , flujoUnidad, flujoCalculoRollo, flujoSubirPedido])
+    const adapterFlow = createFlow([flujoPrincipal, flujoCotizar, flujoCalculo, flujoIndicaciones, flujoPromocionLocal, flujoFinalizar,
+        flujoUnidad, flujoCalculoRollo, flujoSubirPedido, flujoEjecutivo])
 
     const adapterProvider = createProvider(MetaProvider, {
         jwtToken: 'EAAOqAf57coUBO6ca3xDX7Jd59dLNWP1nIZCXYUrhGuFRJ6E9BETKakAf0jdpZCzXljTYlKLsZAa2ZBoxThRIahimSGa3l3ErQ14NyKMYzALrBpO1ncbOrbI4YYVgIOxkngzHvAQVXq2xR3oIIVNOXBzQCCtVv2qHQAFFZCSXlAnBGcarphLGgLympg4yTVI4u',
@@ -26,12 +29,15 @@ const main = async () => {
         verifyToken: 'agente',
         version: 'v16.0',
     })
+    const server = new ServerHttp(adapterProvider);
 
-    createBot({
+    await createBot({ // ** NUEVO: Se agrego await para esperar a que se cree el bot
         flow: adapterFlow,
         provider: adapterProvider,
         database: adapterDB,
     })
+
+    server.start();
 }
 
 main()

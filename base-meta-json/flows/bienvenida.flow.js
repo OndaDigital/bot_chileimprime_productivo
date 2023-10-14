@@ -1,10 +1,10 @@
 const flujoCotizar = require('./cotizar.flow');
-
+const flujoEjecutivo = require('./ejecutivoFlow');
 const {addKeyword, EVENTS} = require('@bot-whatsapp/bot')
 
 
 
-module.exports = addKeyword(['Hola', 'Menu',])
+module.exports = addKeyword(EVENTS.WELCOME)
     .addAnswer(['🖨️ *COTIZADOR CHILEIMPRIME* 🖨️', 
     'Ahora podras subir tus archivos y cotizar en linea, de esta forma tomaremos tu pedido mucho mas rápido'], 
     {delay:200})
@@ -20,7 +20,7 @@ module.exports = addKeyword(['Hola', 'Menu',])
     {delay:800, capture:true},async (ctx, { provider, flowDynamic, fallBack,gotoFlow}) => {
         const respuesta = ctx.body;
         console.log(ctx);
-        const opciones = ['1', '2', '3', '4', 'menu'];
+        const opciones = ['1', '2', '3', '4', '5', 'menu'];
         if(!opciones.includes(respuesta)){
             await fallBack(`La opcion: "${respuesta}" no es válida, por favor elige una opción del menú *[1, 2, 3, 4, menu]*`);
         }
@@ -40,6 +40,9 @@ module.exports = addKeyword(['Hola', 'Menu',])
             }
             else if(respuesta === '4'){
                 await fallBack('Esta opción no está disponible aún');
+            }
+            else if(respuesta === '5'){
+                await gotoFlow(flujoEjecutivo);
             }
             else if(respuesta === 'menu'){
                 await flowDynamic('bienvenida');
