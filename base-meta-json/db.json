@@ -1,7 +1,15 @@
 [
   {
-    "ref": "ans_06f01171-9333-4e06-aed8-9ea3422f34dd",
-    "keyword": "key_50038df7-423e-4281-9e94-b784e883e6f6",
+    "ref": "cbef402b-b995-4d1a-8b9a-22db20005108",
+    "keyword": "9ada991d9c52885eeeaed6fddc812252",
+    "answer": "Hola",
+    "options": {},
+    "from": "56955157247",
+    "refSerialize": "c22e4066d61d81721def9b25d8a397e8"
+  },
+  {
+    "ref": "ans_a6bb939f-137a-4656-83ba-48f313380291",
+    "keyword": "key_be443429-8d6c-4f3c-b294-e42a0845fc0a",
     "answer": "🖨️ *COTIZADOR CHILEIMPRIME* 🖨️\nAhora podras subir tus archivos y cotizar en linea, de esta forma tomaremos tu pedido mucho mas rápido",
     "options": {
       "media": null,
@@ -14,12 +22,12 @@
       "keyword": {},
       "callback": false
     },
-    "refSerialize": "67f74c648934f49fbec61f55c41fcabf",
-    "from": "56937782810"
+    "refSerialize": "5bb8f62bc5b2f75bcb84562a3f345db2",
+    "from": "56955157247"
   },
   {
-    "ref": "ans_97ca4a88-bc1d-48e8-a761-017fd3857221",
-    "keyword": "ans_06f01171-9333-4e06-aed8-9ea3422f34dd",
+    "ref": "ans_9f5d5397-8095-4f2f-99d4-3ff724b9e3bc",
+    "keyword": "ans_a6bb939f-137a-4656-83ba-48f313380291",
     "answer": "👉 *1.* Iniciar una cotización (*La forma más rapida*)\n👉 *2.* Horarios y dirección del local\n👉 *3.* Consultar por el estado de un pedido\n👉 *4.* Necesito ayuda, tengo dudas con el archivo o formato\n👉 *5.* Hablar con un *ejecutivo* (tiempo de respuesta de 1 a 2 horas)\n📌 Escribe *menu* en cualquier momento para volver a ver este menú ",
     "options": {
       "media": null,
@@ -32,12 +40,12 @@
       "keyword": {},
       "callback": true
     },
-    "refSerialize": "0cfe92a348c069c925df25d787c86189",
-    "from": "56937782810"
+    "refSerialize": "f139079f02119f587a63ff5e293fa473",
+    "from": "56955157247"
   },
   {
-    "ref": "ans_97ca4a88-bc1d-48e8-a761-017fd3857221",
-    "keyword": "ans_06f01171-9333-4e06-aed8-9ea3422f34dd",
+    "ref": "ans_9f5d5397-8095-4f2f-99d4-3ff724b9e3bc",
+    "keyword": "ans_a6bb939f-137a-4656-83ba-48f313380291",
     "answer": "👉 *1.* Iniciar una cotización (*La forma más rapida*)\n👉 *2.* Horarios y dirección del local\n👉 *3.* Consultar por el estado de un pedido\n👉 *4.* Necesito ayuda, tengo dudas con el archivo o formato\n👉 *5.* Hablar con un *ejecutivo* (tiempo de respuesta de 1 a 2 horas)\n📌 Escribe *menu* en cualquier momento para volver a ver este menú ",
     "options": {
       "media": null,
@@ -50,20 +58,20 @@
       "keyword": {},
       "callback": true
     },
-    "refSerialize": "0cfe92a348c069c925df25d787c86189",
-    "from": "56937782810"
+    "refSerialize": "f139079f02119f587a63ff5e293fa473",
+    "from": "56955157247"
   },
   {
-    "ref": "48fffdd5-75b3-41a7-9a17-017e1ad5d998",
-    "keyword": "0cfe92a348c069c925df25d787c86189",
+    "ref": "140b0d39-0a08-487b-bcab-4761949aea0e",
+    "keyword": "f139079f02119f587a63ff5e293fa473",
     "answer": "5",
     "options": {},
-    "from": "56937782810",
+    "from": "56955157247",
     "refSerialize": "d2b414a4bc0b3490276097c7513b4c8c"
   },
   {
-    "ref": "ans_610ba12b-c878-41ca-827a-47043d7818e6",
-    "keyword": "key_fa1b50c2-1e11-4aac-93e3-8c7469545568",
+    "ref": "ans_a511d9cd-a5fe-467d-afee-975349932736",
+    "keyword": "key_83184fc2-812e-4a17-8cd7-a932c1d57c77",
     "answer": "Un ejecutivo se contactara contigo a la brevedad",
     "options": {
       "media": null,
@@ -76,12 +84,30 @@
       "keyword": {},
       "callback": false
     },
-    "refSerialize": "a6b0ee4cd3dc712622087d7afecd706a",
-    "from": "56937782810"
+    "refSerialize": "d11b1da1b433c6b0951ac1d3211bbdb6",
+    "from": "56955157247"
   },
   {
-    "ref": "ans_12055d80-eace-4671-8f75-8f915a14faad",
-    "keyword": "ans_610ba12b-c878-41ca-827a-47043d7818e6",
+    "ref": "ans_e9fd8171-6bb9-4b95-984b-b0ec4b850408",
+    "keyword": "ans_a511d9cd-a5fe-467d-afee-975349932736",
+    "answer": "__call_action__",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": false,
+      "child": null,
+      "delay": 0,
+      "idle": null,
+      "nested": [],
+      "keyword": {},
+      "callback": true
+    },
+    "refSerialize": "6de05e307365165d45dd582057e2f5e6",
+    "from": "56955157247"
+  },
+  {
+    "ref": "ans_12febeeb-d661-41b5-b44f-03f2f0e23645",
+    "keyword": "ans_e9fd8171-6bb9-4b95-984b-b0ec4b850408",
     "answer": "__capture_only_intended__",
     "options": {
       "media": null,
@@ -94,20 +120,20 @@
       "keyword": {},
       "callback": true
     },
-    "refSerialize": "54b2641801dc72e34f867da3440fccdd",
-    "from": "56937782810"
+    "refSerialize": "391f253108518695e23ebe0af79d4725",
+    "from": "56955157247"
   },
   {
-    "ref": "b36a2c82-5bc9-4190-87bb-4385c225fd52",
-    "keyword": "54b2641801dc72e34f867da3440fccdd",
-    "answer": "dfgdfgdfg",
+    "ref": "edc1b233-e7b4-47a8-8730-a8751b824fe3",
+    "keyword": "391f253108518695e23ebe0af79d4725",
+    "answer": "H",
     "options": {},
-    "from": "56937782810",
-    "refSerialize": "9bb9cc867abfb164305570d8917897ca"
+    "from": "56955157247",
+    "refSerialize": "ff1074a08d544026a56e516f49298f06"
   },
   {
-    "ref": "ans_12055d80-eace-4671-8f75-8f915a14faad",
-    "keyword": "ans_610ba12b-c878-41ca-827a-47043d7818e6",
+    "ref": "ans_12febeeb-d661-41b5-b44f-03f2f0e23645",
+    "keyword": "ans_e9fd8171-6bb9-4b95-984b-b0ec4b850408",
     "answer": "__capture_only_intended__",
     "options": {
       "media": null,
@@ -120,20 +146,20 @@
       "keyword": {},
       "callback": true
     },
-    "refSerialize": "54b2641801dc72e34f867da3440fccdd",
-    "from": "56937782810"
+    "refSerialize": "391f253108518695e23ebe0af79d4725",
+    "from": "56955157247"
   },
   {
-    "ref": "3a4a41b5-4ab8-4b32-9eb6-0af79389395f",
-    "keyword": "54b2641801dc72e34f867da3440fccdd",
-    "answer": "????",
+    "ref": "b5644a1b-6770-4b24-97a5-ca68bb1809c1",
+    "keyword": "391f253108518695e23ebe0af79d4725",
+    "answer": "Ff",
     "options": {},
-    "from": "56937782810",
-    "refSerialize": "e8feca398890cf052130efbddb410a15"
+    "from": "56955157247",
+    "refSerialize": "01a1a4402f1d7f7b387ac5544bd2f90e"
   },
   {
-    "ref": "ans_12055d80-eace-4671-8f75-8f915a14faad",
-    "keyword": "ans_610ba12b-c878-41ca-827a-47043d7818e6",
+    "ref": "ans_12febeeb-d661-41b5-b44f-03f2f0e23645",
+    "keyword": "ans_e9fd8171-6bb9-4b95-984b-b0ec4b850408",
     "answer": "__capture_only_intended__",
     "options": {
       "media": null,
@@ -146,20 +172,20 @@
       "keyword": {},
       "callback": true
     },
-    "refSerialize": "54b2641801dc72e34f867da3440fccdd",
-    "from": "56937782810"
+    "refSerialize": "391f253108518695e23ebe0af79d4725",
+    "from": "56955157247"
   },
   {
-    "ref": "4e6ff6b8-72ba-43c9-86d9-5fe4fc90a16a",
-    "keyword": "54b2641801dc72e34f867da3440fccdd",
-    "answer": "fsdfsdfsdf",
+    "ref": "09bbf394-780a-45a9-abae-0f83b2e7b58d",
+    "keyword": "391f253108518695e23ebe0af79d4725",
+    "answer": "Hh",
     "options": {},
-    "from": "56937782810",
-    "refSerialize": "7cfe941c53e28482989ab5c1cf82218d"
+    "from": "56955157247",
+    "refSerialize": "cff28c5a22bab5f9c3fa1c2e73957dc7"
   },
   {
-    "ref": "ans_12055d80-eace-4671-8f75-8f915a14faad",
-    "keyword": "ans_610ba12b-c878-41ca-827a-47043d7818e6",
+    "ref": "ans_12febeeb-d661-41b5-b44f-03f2f0e23645",
+    "keyword": "ans_e9fd8171-6bb9-4b95-984b-b0ec4b850408",
     "answer": "__capture_only_intended__",
     "options": {
       "media": null,
@@ -172,33 +198,7 @@
       "keyword": {},
       "callback": true
     },
-    "refSerialize": "54b2641801dc72e34f867da3440fccdd",
-    "from": "56937782810"
-  },
-  {
-    "ref": "c85cda9a-2421-44f2-b637-5783a0d0adc2",
-    "keyword": "54b2641801dc72e34f867da3440fccdd",
-    "answer": "Topdo bien?",
-    "options": {},
-    "from": "56937782810",
-    "refSerialize": "e218d81c9e70746c55ad4f0a51ada1e4"
-  },
-  {
-    "ref": "ans_12055d80-eace-4671-8f75-8f915a14faad",
-    "keyword": "ans_610ba12b-c878-41ca-827a-47043d7818e6",
-    "answer": "__capture_only_intended__",
-    "options": {
-      "media": null,
-      "buttons": [],
-      "capture": true,
-      "child": null,
-      "delay": 0,
-      "idle": null,
-      "nested": [],
-      "keyword": {},
-      "callback": true
-    },
-    "refSerialize": "54b2641801dc72e34f867da3440fccdd",
-    "from": "56937782810"
+    "refSerialize": "391f253108518695e23ebe0af79d4725",
+    "from": "56955157247"
   }
 ]
