@@ -4,12 +4,10 @@ const {addKeyword, EVENTS} = require('@bot-whatsapp/bot')
 
 
 
-module.exports = addKeyword(EVENTS.WELCOME)
-    .addAnswer(['🖨️ *COTIZADOR CHILEIMPRIME* 🖨️', 
-    'Ahora podras subir tus archivos y cotizar en linea, de esta forma tomaremos tu pedido mucho mas rápido'], 
-    {delay:200})
+module.exports = addKeyword(EVENTS.ACTION)
     .addAnswer(
-        [            
+        [
+            '*Muchas gracias!! ahora escoge una opción del menú* \n',
             '👉 *1.* Iniciar una cotización (*La forma más rapida*)',
             '👉 *2.* Horarios y dirección del local',
             '👉 *3.* Consultar por el estado de un pedido',

@@ -1,33 +1,50 @@
 [
   {
-    "ref": "6d2e9da0-57b1-4d39-b82b-98fbfd501cfa",
-    "answer": "hola",
+    "ref": "9fe48984-d4b8-4dd5-8b38-d1f538c21657",
+    "keyword": "d421474f1e4f83e5f63f266eade17dee",
+    "answer": "Hola",
     "options": {},
     "from": "56937782810",
-    "refSerialize": "79e7fc16f7fb85373fd25a99390f44c0"
+    "refSerialize": "c22e4066d61d81721def9b25d8a397e8"
   },
   {
-    "ref": "ans_5dc954bb-d765-4749-b538-6e4a1aec748c",
-    "keyword": "key_c7f839f1-397d-4b7c-b6ef-625175f48ad3",
-    "answer": "🖨️ *COTIZADOR CHILEIMPRIME* 🖨️\nAhora podras subir tus archivos y cotizar en linea, de esta forma tomaremos tu pedido mucho mas rápido",
+    "ref": "f9743cb5-fe28-4186-99a9-cfae151fb52d",
+    "keyword": "c22e4066d61d81721def9b25d8a397e8",
+    "answer": "fdsfsdfsdf",
+    "options": {},
+    "from": "56937782810",
+    "refSerialize": "f6975c3d1338ed0c443367fb42c93f44"
+  },
+  {
+    "ref": "ans_d3771408-88fe-487a-8208-5f0c45449b9a",
+    "keyword": "key_68657f87-73ac-4d21-810b-f222a307be8d",
+    "answer": "Hola, soy el asistente virtual de Chileimprime, para comenzar, *por favor ingresa tu correo electrónico*",
     "options": {
       "media": null,
       "buttons": [],
-      "capture": false,
+      "capture": true,
       "child": null,
-      "delay": 200,
+      "delay": 0,
       "idle": null,
       "nested": [],
       "keyword": {},
-      "callback": false
+      "callback": true
     },
-    "refSerialize": "128492de6017c5db98a8dccb3dc10769",
+    "refSerialize": "a019aa478278e35b7ca0704480d7d6fa",
     "from": "56937782810"
   },
   {
-    "ref": "ans_dc1dc98d-b228-4049-a7e0-2f5dc96a7905",
-    "keyword": "ans_5dc954bb-d765-4749-b538-6e4a1aec748c",
-    "answer": "👉 *1.* Iniciar una cotización (*La forma más rapida*)\n👉 *2.* Horarios y dirección del local\n👉 *3.* Consultar por el estado de un pedido\n👉 *4.* Necesito ayuda, tengo dudas con el archivo o formato\n👉 *5.* Hablar con un *ejecutivo* (tiempo de respuesta de 1 a 2 horas)\n📌 Escribe *menu* en cualquier momento para volver a ver este menú ",
+    "ref": "328bdc61-8ccb-4f12-9dea-0d02fb1851ea",
+    "keyword": "a019aa478278e35b7ca0704480d7d6fa",
+    "answer": "fsdfsdfsdf@gmail.com",
+    "options": {},
+    "from": "56937782810",
+    "refSerialize": "de4aedb1b35ec4cb6ff5db4ed9f04947"
+  },
+  {
+    "ref": "ans_ca348acb-3918-4161-833e-c06e311ab674",
+    "keyword": "key_ecf584ff-bd8a-454b-8014-36a0a3f5dac4",
+    "answer": "*Muchas gracias!! ahora escoge una opción del menú* \n\n👉 *1.* Iniciar una cotización (*La forma más rapida*)\n👉 *2.* Horarios y dirección del local\n👉 *3.* Consultar por el estado de un pedido\n👉 *4.* Necesito ayuda, tengo dudas con el archivo o formato\n👉 *5.* Hablar con un *ejecutivo* (tiempo de respuesta de 1 a 2 horas)\n📌 Escribe *menu* en cualquier momento para volver a ver este menú ",
     "options": {
       "media": null,
       "buttons": [],
@@ -39,520 +56,51 @@
       "keyword": {},
       "callback": true
     },
-    "refSerialize": "00dbb69b005a5d10da0a39e6789bf2d0",
+    "refSerialize": "6159cf381f78a3bafdb5a08e3b63f673",
     "from": "56937782810"
   },
   {
-    "ref": "ans_dc1dc98d-b228-4049-a7e0-2f5dc96a7905",
-    "keyword": "ans_5dc954bb-d765-4749-b538-6e4a1aec748c",
-    "answer": "👉 *1.* Iniciar una cotización (*La forma más rapida*)\n👉 *2.* Horarios y dirección del local\n👉 *3.* Consultar por el estado de un pedido\n👉 *4.* Necesito ayuda, tengo dudas con el archivo o formato\n👉 *5.* Hablar con un *ejecutivo* (tiempo de respuesta de 1 a 2 horas)\n📌 Escribe *menu* en cualquier momento para volver a ver este menú ",
-    "options": {
-      "media": null,
-      "buttons": [],
-      "capture": true,
-      "child": null,
-      "delay": 800,
-      "idle": null,
-      "nested": [],
-      "keyword": {},
-      "callback": true
-    },
-    "refSerialize": "00dbb69b005a5d10da0a39e6789bf2d0",
-    "from": "56937782810"
-  },
-  {
-    "ref": "dd3459ef-34ec-4391-8262-7bebb31f6429",
-    "keyword": "00dbb69b005a5d10da0a39e6789bf2d0",
-    "answer": "5",
+    "ref": "b699e505-b46a-4a5a-8067-ce00a197b966",
+    "keyword": "6159cf381f78a3bafdb5a08e3b63f673",
+    "answer": "1",
     "options": {},
     "from": "56937782810",
-    "refSerialize": "d2b414a4bc0b3490276097c7513b4c8c"
+    "refSerialize": "290236b1d481a790a200ea6e94b2122a"
   },
   {
-    "ref": "ans_05b97560-b5fe-40d0-aeaf-da4e63517261",
-    "keyword": "key_24ac1ba4-10df-4d0c-bcaf-921bbd59a0ed",
-    "answer": "Perfecto, para continuar *escribe tu nombre:*",
-    "options": {
-      "media": null,
-      "buttons": [],
-      "capture": true,
-      "child": null,
-      "delay": 0,
-      "idle": null,
-      "nested": [],
-      "keyword": {},
-      "callback": true
-    },
-    "refSerialize": "dad672ae241fbe6b0766f26d05b9513e",
-    "from": "56937782810"
-  },
-  {
-    "ref": "59f0a026-cab2-4d87-8ab1-f7f481126478",
-    "keyword": "dad672ae241fbe6b0766f26d05b9513e",
-    "answer": "hgfhhfg",
-    "options": {},
-    "from": "56937782810",
-    "refSerialize": "9f542da74688afee156624631ec1b374"
-  },
-  {
-    "ref": "ans_12c414e0-110c-48d8-b8ef-7f4345c5c8b7",
-    "keyword": "ans_05b97560-b5fe-40d0-aeaf-da4e63517261",
-    "answer": "Ahora escribe *tu correo:*",
-    "options": {
-      "media": null,
-      "buttons": [],
-      "capture": true,
-      "child": null,
-      "delay": 0,
-      "idle": null,
-      "nested": [],
-      "keyword": {},
-      "callback": true
-    },
-    "refSerialize": "ba6756fec72fc21573045b328989500e",
-    "from": "56937782810"
-  },
-  {
-    "ref": "6c19b6a7-29a7-4202-a764-82e5db1b8439",
-    "keyword": "ba6756fec72fc21573045b328989500e",
-    "answer": "sdfsdfsdf@gmail.com",
-    "options": {},
-    "from": "56937782810",
-    "refSerialize": "ca7a695e2cdd95a744ef45888e2a948f"
-  },
-  {
-    "ref": "ans_3d93567e-a01f-42d2-97aa-4f28d0d71f00",
-    "keyword": "ans_12c414e0-110c-48d8-b8ef-7f4345c5c8b7",
-    "answer": "Perfecto, en breve un ejecutivo te atendera. *Mientras, escribe el motivo* por el que nos escribes: ",
+    "ref": "ans_1bc42aad-5924-419e-ba1d-6e31d69f1431",
+    "keyword": "key_53709633-574a-4a65-a655-75aff66e8f2c",
+    "answer": "🔍 Cargando catálogo... 📔 Por favor, espera 🙏 ¡No escribas todavía!! ⏳ Esto puede tardar unos segundos... ⏱️",
     "options": {
       "media": null,
       "buttons": [],
       "capture": false,
       "child": null,
-      "delay": 0,
+      "delay": 100,
       "idle": null,
       "nested": [],
       "keyword": {},
       "callback": true
     },
-    "refSerialize": "9485deab2184800836b9be18ba4bdc59",
+    "refSerialize": "3899af6ec65a8daeefc5fee788ce191c",
     "from": "56937782810"
   },
   {
-    "ref": "ans_7299355a-74bc-4c14-b691-95e0620e7bc0",
-    "keyword": "ans_3d93567e-a01f-42d2-97aa-4f28d0d71f00",
-    "answer": "__capture_only_intended__",
+    "ref": "ans_eece751a-97bf-48bd-87bc-5e77ab1fbea3",
+    "keyword": "ans_1bc42aad-5924-419e-ba1d-6e31d69f1431",
+    "answer": "En base al catalogo, escribe en el chat el nombre del servicio para continuar (Solo puede ser 1)",
     "options": {
       "media": null,
       "buttons": [],
       "capture": true,
       "child": null,
-      "delay": 0,
-      "idle": 10000,
-      "nested": [],
-      "keyword": {},
-      "callback": true
-    },
-    "refSerialize": "9633cdb2f13111797ddf258efaeaff3f",
-    "from": "56937782810"
-  },
-  {
-    "ref": "92b885a3-76dd-4bba-89a3-458a967308ac",
-    "keyword": "9633cdb2f13111797ddf258efaeaff3f",
-    "answer": "pl",
-    "options": {},
-    "from": "56937782810",
-    "refSerialize": "1b1230cd5c0f95754cc75dd169ede85e"
-  },
-  {
-    "ref": "ans_7299355a-74bc-4c14-b691-95e0620e7bc0",
-    "keyword": "ans_3d93567e-a01f-42d2-97aa-4f28d0d71f00",
-    "answer": "__capture_only_intended__",
-    "options": {
-      "media": null,
-      "buttons": [],
-      "capture": true,
-      "child": null,
-      "delay": 0,
-      "idle": 10000,
-      "nested": [],
-      "keyword": {},
-      "callback": true
-    },
-    "refSerialize": "9633cdb2f13111797ddf258efaeaff3f",
-    "from": "56937782810"
-  },
-  {
-    "ref": "df0a908a-5e84-4c25-a457-66e37015d6e0",
-    "keyword": "9633cdb2f13111797ddf258efaeaff3f",
-    "answer": "hablo en 5 s",
-    "options": {},
-    "from": "56937782810",
-    "refSerialize": "0b8c4ccf62200bf63426af48cfa58d92"
-  },
-  {
-    "ref": "ans_7299355a-74bc-4c14-b691-95e0620e7bc0",
-    "keyword": "ans_3d93567e-a01f-42d2-97aa-4f28d0d71f00",
-    "answer": "__capture_only_intended__",
-    "options": {
-      "media": null,
-      "buttons": [],
-      "capture": true,
-      "child": null,
-      "delay": 0,
-      "idle": 10000,
-      "nested": [],
-      "keyword": {},
-      "callback": true
-    },
-    "refSerialize": "9633cdb2f13111797ddf258efaeaff3f",
-    "from": "56937782810"
-  },
-  {
-    "ref": "ans_d2d3a8ea-0620-4993-b2e2-8b76aa7c5d6d",
-    "keyword": "key_ba61367d-36b0-4832-8d30-73a9fc0d9e3d",
-    "answer": "El chat ha finalizado por inactividad, si deseas volver a iniciar el chat, escribe *hola*",
-    "options": {
-      "media": null,
-      "buttons": [],
-      "capture": false,
-      "child": null,
-      "delay": 0,
-      "idle": null,
-      "nested": [],
-      "keyword": {},
-      "callback": false
-    },
-    "from": "56937782810"
-  },
-  {
-    "ref": "988a1609-3c6a-44b4-9827-0e7bd375a6f4",
-    "answer": "tpdavoa mp se ekecita e odñe",
-    "options": {},
-    "from": "56937782810",
-    "refSerialize": "cfad325f46113de7466a0cf2812d0d8b"
-  },
-  {
-    "ref": "ans_5dc954bb-d765-4749-b538-6e4a1aec748c",
-    "keyword": "key_c7f839f1-397d-4b7c-b6ef-625175f48ad3",
-    "answer": "🖨️ *COTIZADOR CHILEIMPRIME* 🖨️\nAhora podras subir tus archivos y cotizar en linea, de esta forma tomaremos tu pedido mucho mas rápido",
-    "options": {
-      "media": null,
-      "buttons": [],
-      "capture": false,
-      "child": null,
-      "delay": 200,
-      "idle": null,
-      "nested": [],
-      "keyword": {},
-      "callback": false
-    },
-    "refSerialize": "128492de6017c5db98a8dccb3dc10769",
-    "from": "56937782810"
-  },
-  {
-    "ref": "ans_dc1dc98d-b228-4049-a7e0-2f5dc96a7905",
-    "keyword": "ans_5dc954bb-d765-4749-b538-6e4a1aec748c",
-    "answer": "👉 *1.* Iniciar una cotización (*La forma más rapida*)\n👉 *2.* Horarios y dirección del local\n👉 *3.* Consultar por el estado de un pedido\n👉 *4.* Necesito ayuda, tengo dudas con el archivo o formato\n👉 *5.* Hablar con un *ejecutivo* (tiempo de respuesta de 1 a 2 horas)\n📌 Escribe *menu* en cualquier momento para volver a ver este menú ",
-    "options": {
-      "media": null,
-      "buttons": [],
-      "capture": true,
-      "child": null,
-      "delay": 800,
+      "delay": 12000,
       "idle": null,
       "nested": [],
       "keyword": {},
       "callback": true
     },
-    "refSerialize": "00dbb69b005a5d10da0a39e6789bf2d0",
-    "from": "56937782810"
-  },
-  {
-    "ref": "ans_dc1dc98d-b228-4049-a7e0-2f5dc96a7905",
-    "keyword": "ans_5dc954bb-d765-4749-b538-6e4a1aec748c",
-    "answer": "👉 *1.* Iniciar una cotización (*La forma más rapida*)\n👉 *2.* Horarios y dirección del local\n👉 *3.* Consultar por el estado de un pedido\n👉 *4.* Necesito ayuda, tengo dudas con el archivo o formato\n👉 *5.* Hablar con un *ejecutivo* (tiempo de respuesta de 1 a 2 horas)\n📌 Escribe *menu* en cualquier momento para volver a ver este menú ",
-    "options": {
-      "media": null,
-      "buttons": [],
-      "capture": true,
-      "child": null,
-      "delay": 800,
-      "idle": null,
-      "nested": [],
-      "keyword": {},
-      "callback": true
-    },
-    "refSerialize": "00dbb69b005a5d10da0a39e6789bf2d0",
-    "from": "56937782810"
-  },
-  {
-    "ref": "1db35111-e0f3-40ba-8079-1ffd64d8d538",
-    "keyword": "00dbb69b005a5d10da0a39e6789bf2d0",
-    "answer": "5",
-    "options": {},
-    "from": "56937782810",
-    "refSerialize": "d2b414a4bc0b3490276097c7513b4c8c"
-  },
-  {
-    "ref": "ans_05b97560-b5fe-40d0-aeaf-da4e63517261",
-    "keyword": "key_24ac1ba4-10df-4d0c-bcaf-921bbd59a0ed",
-    "answer": "Perfecto, para continuar *escribe tu nombre:*",
-    "options": {
-      "media": null,
-      "buttons": [],
-      "capture": true,
-      "child": null,
-      "delay": 0,
-      "idle": null,
-      "nested": [],
-      "keyword": {},
-      "callback": true
-    },
-    "refSerialize": "dad672ae241fbe6b0766f26d05b9513e",
-    "from": "56937782810"
-  },
-  {
-    "ref": "4379b69b-263f-47bf-89a8-9f9a9297010e",
-    "keyword": "dad672ae241fbe6b0766f26d05b9513e",
-    "answer": "dfsfsdfsddf",
-    "options": {},
-    "from": "56937782810",
-    "refSerialize": "5bf32d214abc547ff355c1d30710b6a9"
-  },
-  {
-    "ref": "ans_12c414e0-110c-48d8-b8ef-7f4345c5c8b7",
-    "keyword": "ans_05b97560-b5fe-40d0-aeaf-da4e63517261",
-    "answer": "Ahora escribe *tu correo:*",
-    "options": {
-      "media": null,
-      "buttons": [],
-      "capture": true,
-      "child": null,
-      "delay": 0,
-      "idle": null,
-      "nested": [],
-      "keyword": {},
-      "callback": true
-    },
-    "refSerialize": "ba6756fec72fc21573045b328989500e",
-    "from": "56937782810"
-  },
-  {
-    "ref": "2b56d4f8-21e5-4d6e-a400-ed04a280d1b6",
-    "keyword": "ba6756fec72fc21573045b328989500e",
-    "answer": "fdfsdfsdf@gmail.com",
-    "options": {},
-    "from": "56937782810",
-    "refSerialize": "d12a5b3a377c6be41e07c5f56ca108b1"
-  },
-  {
-    "ref": "ans_3d93567e-a01f-42d2-97aa-4f28d0d71f00",
-    "keyword": "ans_12c414e0-110c-48d8-b8ef-7f4345c5c8b7",
-    "answer": "Perfecto, en breve un ejecutivo te atendera. *Mientras, escribe el motivo* por el que nos escribes: ",
-    "options": {
-      "media": null,
-      "buttons": [],
-      "capture": false,
-      "child": null,
-      "delay": 0,
-      "idle": null,
-      "nested": [],
-      "keyword": {},
-      "callback": true
-    },
-    "refSerialize": "9485deab2184800836b9be18ba4bdc59",
-    "from": "56937782810"
-  },
-  {
-    "ref": "ans_7299355a-74bc-4c14-b691-95e0620e7bc0",
-    "keyword": "ans_3d93567e-a01f-42d2-97aa-4f28d0d71f00",
-    "answer": "__capture_only_intended__",
-    "options": {
-      "media": null,
-      "buttons": [],
-      "capture": true,
-      "child": null,
-      "delay": 0,
-      "idle": 10000,
-      "nested": [],
-      "keyword": {},
-      "callback": true
-    },
-    "refSerialize": "9633cdb2f13111797ddf258efaeaff3f",
-    "from": "56937782810"
-  },
-  {
-    "ref": "9f548f39-c223-4369-9e1c-9d68856815f6",
-    "keyword": "9633cdb2f13111797ddf258efaeaff3f",
-    "answer": "ok",
-    "options": {},
-    "from": "56937782810",
-    "refSerialize": "5024d8306739a7b2b633ca6e46c22e04"
-  },
-  {
-    "ref": "ans_7299355a-74bc-4c14-b691-95e0620e7bc0",
-    "keyword": "ans_3d93567e-a01f-42d2-97aa-4f28d0d71f00",
-    "answer": "__capture_only_intended__",
-    "options": {
-      "media": null,
-      "buttons": [],
-      "capture": true,
-      "child": null,
-      "delay": 0,
-      "idle": 10000,
-      "nested": [],
-      "keyword": {},
-      "callback": true
-    },
-    "refSerialize": "9633cdb2f13111797ddf258efaeaff3f",
-    "from": "56937782810"
-  },
-  {
-    "ref": "fcde11f3-50c5-4bca-8d92-32205f8b470e",
-    "keyword": "9633cdb2f13111797ddf258efaeaff3f",
-    "answer": "mientras hable se reinicia el timeout",
-    "options": {},
-    "from": "56937782810",
-    "refSerialize": "d1daa0612ef6c573fce9525299123a24"
-  },
-  {
-    "ref": "ans_7299355a-74bc-4c14-b691-95e0620e7bc0",
-    "keyword": "ans_3d93567e-a01f-42d2-97aa-4f28d0d71f00",
-    "answer": "__capture_only_intended__",
-    "options": {
-      "media": null,
-      "buttons": [],
-      "capture": true,
-      "child": null,
-      "delay": 0,
-      "idle": 10000,
-      "nested": [],
-      "keyword": {},
-      "callback": true
-    },
-    "refSerialize": "9633cdb2f13111797ddf258efaeaff3f",
-    "from": "56937782810"
-  },
-  {
-    "ref": "c4e35888-343a-43ab-bf19-def619f0301a",
-    "keyword": "9633cdb2f13111797ddf258efaeaff3f",
-    "answer": "ok",
-    "options": {},
-    "from": "56937782810",
-    "refSerialize": "5024d8306739a7b2b633ca6e46c22e04"
-  },
-  {
-    "ref": "ans_7299355a-74bc-4c14-b691-95e0620e7bc0",
-    "keyword": "ans_3d93567e-a01f-42d2-97aa-4f28d0d71f00",
-    "answer": "__capture_only_intended__",
-    "options": {
-      "media": null,
-      "buttons": [],
-      "capture": true,
-      "child": null,
-      "delay": 0,
-      "idle": 10000,
-      "nested": [],
-      "keyword": {},
-      "callback": true
-    },
-    "refSerialize": "9633cdb2f13111797ddf258efaeaff3f",
-    "from": "56937782810"
-  },
-  {
-    "ref": "4bce3142-6b6c-4a5f-adbe-2f5f961d1165",
-    "keyword": "9633cdb2f13111797ddf258efaeaff3f",
-    "answer": "Todavia no!!!",
-    "options": {},
-    "from": "56937782810",
-    "refSerialize": "d9fc473317f640a66422d8b293cf3fab"
-  },
-  {
-    "ref": "ans_7299355a-74bc-4c14-b691-95e0620e7bc0",
-    "keyword": "ans_3d93567e-a01f-42d2-97aa-4f28d0d71f00",
-    "answer": "__capture_only_intended__",
-    "options": {
-      "media": null,
-      "buttons": [],
-      "capture": true,
-      "child": null,
-      "delay": 0,
-      "idle": 10000,
-      "nested": [],
-      "keyword": {},
-      "callback": true
-    },
-    "refSerialize": "9633cdb2f13111797ddf258efaeaff3f",
-    "from": "56937782810"
-  },
-  {
-    "ref": "4f104600-72dd-4ac6-a740-7f688a6ec78f",
-    "keyword": "9633cdb2f13111797ddf258efaeaff3f",
-    "answer": "see",
-    "options": {},
-    "from": "56937782810",
-    "refSerialize": "9742b2e3ca9c2eb793967d380601c561"
-  },
-  {
-    "ref": "ans_7299355a-74bc-4c14-b691-95e0620e7bc0",
-    "keyword": "ans_3d93567e-a01f-42d2-97aa-4f28d0d71f00",
-    "answer": "__capture_only_intended__",
-    "options": {
-      "media": null,
-      "buttons": [],
-      "capture": true,
-      "child": null,
-      "delay": 0,
-      "idle": 10000,
-      "nested": [],
-      "keyword": {},
-      "callback": true
-    },
-    "refSerialize": "9633cdb2f13111797ddf258efaeaff3f",
-    "from": "56937782810"
-  },
-  {
-    "ref": "4d5d4f65-b44c-4357-8a85-f4906e3277f2",
-    "keyword": "9633cdb2f13111797ddf258efaeaff3f",
-    "answer": "ok",
-    "options": {},
-    "from": "56937782810",
-    "refSerialize": "5024d8306739a7b2b633ca6e46c22e04"
-  },
-  {
-    "ref": "ans_7299355a-74bc-4c14-b691-95e0620e7bc0",
-    "keyword": "ans_3d93567e-a01f-42d2-97aa-4f28d0d71f00",
-    "answer": "__capture_only_intended__",
-    "options": {
-      "media": null,
-      "buttons": [],
-      "capture": true,
-      "child": null,
-      "delay": 0,
-      "idle": 10000,
-      "nested": [],
-      "keyword": {},
-      "callback": true
-    },
-    "refSerialize": "9633cdb2f13111797ddf258efaeaff3f",
-    "from": "56937782810"
-  },
-  {
-    "ref": "ans_d2d3a8ea-0620-4993-b2e2-8b76aa7c5d6d",
-    "keyword": "key_ba61367d-36b0-4832-8d30-73a9fc0d9e3d",
-    "answer": "El chat ha finalizado por inactividad, si deseas volver a iniciar el chat, escribe *hola*",
-    "options": {
-      "media": null,
-      "buttons": [],
-      "capture": false,
-      "child": null,
-      "delay": 0,
-      "idle": null,
-      "nested": [],
-      "keyword": {},
-      "callback": false
-    },
+    "refSerialize": "d1d7b78fb65d107dcff5eb14782a2ad7",
     "from": "56937782810"
   }
 ]

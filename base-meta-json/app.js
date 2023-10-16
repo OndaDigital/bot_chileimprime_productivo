@@ -16,12 +16,34 @@ const flujoEjecutivo = require('./flows/ejecutivoFlow');
 const ServerHttp = require('./http/index.js');
 
 
+//Se inicia la conversacion con el correo
+const pedirCorreo = addKeyword(EVENTS.WELCOME).addAnswer("Hola, soy el asistente virtual de Chileimprime, para comenzar, *por favor ingresa tu correo electrónico*"
+,{capture:true}, async (ctx, {state, provider, flowDynamic, fallBack, gotoFlow}) => {
+
+    const email = ctx.body;
+    const nombre = ctx.pushName;
+    const numero = ctx.from;
+    
+    if(!validarCorreo(email)){
+        await fallBack("Correo inválido, por favor inténtelo de nuevo");
+    }
+    else{
+        await state.update({
+            email: email,
+            nombre: nombre,
+            numero_cliente: numero
+        });
+        console.log(`Email: ${email} - Nombre: ${nombre}`);
+        await gotoFlow(flujoPrincipal);
+    }
+
+});
 
 const main = async () => {    
 
     const adapterDB = new JsonFileAdapter()
     const adapterFlow = createFlow([flujoPrincipal, flujoCotizar, flujoCalculo, flujoIndicaciones, flujoPromocionLocal, flujoFinalizar,
-        flujoUnidad, flujoCalculoRollo, flujoSubirPedido, flujoEjecutivo])
+        flujoUnidad, flujoCalculoRollo, flujoSubirPedido, flujoEjecutivo, pedirCorreo])
 
     const adapterProvider = createProvider(MetaProvider, {
         jwtToken: 'EAAOqAf57coUBO6ca3xDX7Jd59dLNWP1nIZCXYUrhGuFRJ6E9BETKakAf0jdpZCzXljTYlKLsZAa2ZBoxThRIahimSGa3l3ErQ14NyKMYzALrBpO1ncbOrbI4YYVgIOxkngzHvAQVXq2xR3oIIVNOXBzQCCtVv2qHQAFFZCSXlAnBGcarphLGgLympg4yTVI4u',
@@ -41,3 +63,10 @@ const main = async () => {
 }
 
 main()
+
+
+// Función para validar el correo electrónico
+function validarCorreo(email) {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return regex.test(email);
+  }

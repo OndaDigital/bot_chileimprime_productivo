@@ -4,45 +4,19 @@ const INBOX_ID = process.env.INBOX_ID;
 const ACCOUNT_ID = process.env.ACCOUNT_ID;
 
 const flujoFinalizar = addKeyword(EVENTS.ACTION).addAnswer("El chat ha finalizado por inactividad, si deseas volver a iniciar el chat, escribe *hola*");
-let timeout;
 
-module.exports = addKeyword(EVENTS.ACTION).addAnswer("Perfecto, para continuar *escribe tu nombre:*"
-,{capture:true}, async (ctx, {state, provider, flowDynamic, fallBack, gotoFlow}) => {
 
-    const nombre = ctx.body;
-    
-    
-    if(!validarNombre(nombre)){
-        await fallBack("Nombre inválido, por favor intentelo de nuevo");
-    }
-
-    await state.update({
-        nombre: nombre
-    });
-
-})
-.addAnswer("Ahora escribe *tu correo:*"
-,{capture:true}, async (ctx, {state, provider, flowDynamic, fallBack, gotoFlow}) => {
-
-    const email = ctx.body;
-    
-    
-    if(!validarCorreo(email)){
-        await fallBack("Correo inválido, por favor intentelo de nuevo");
-    }
-
-    await state.update({
-        email: email
-    });
-
-})
+module.exports = addKeyword(EVENTS.ACTION)
 .addAnswer("Perfecto, en breve un ejecutivo te atendera. *Mientras, escribe el motivo* por el que nos escribes: ",null, async (ctx, { state, provider, flowDynamic, fallBack,gotoFlow}) => {
     
+    let timeout = null;
+    await state.update({timeout: timeout});
     //Datos del cliente
     const email = await state.get('email');
     const nombre = await state.get('nombre');
+    const numero_cliente = await state.get('numero_cliente');
 
-    const numeroConSigno = `+${ctx.from}`; //Es lo que usaremos como source_id	
+    const numeroConSigno = `+${numero_cliente}`; //Es lo que usaremos como source_id	
     const id_agente = 84679;
     const id_team = 4044;
     //Creamos un nuevo contacto, si existe, devuelve 0, sino devuelve el ID > 0
@@ -66,17 +40,23 @@ module.exports = addKeyword(EVENTS.ACTION).addAnswer("Perfecto, para continuar *
     await sendMessage(ACCOUNT_ID, id_conversacion, mensaje, 'incoming', true,"text" )
 
     
-}).addAction( {capture:true, idle: 10000}, async (ctx, { inRef, state, provider, flowDynamic, fallBack,gotoFlow}) => {
+}).addAction( {capture:true}, async (ctx, { state, provider, flowDynamic, fallBack,gotoFlow}) => {
 
    
-   
-    clearTimeout(timeout);
-  // Reinicia el timeout cada vez que haya actividad
-  timeout = setTimeout(() => {
-    console.log("Entramos en el idle.");
-    gotoFlow(flujoFinalizar);
-  }, 300000);  // 5 minutos de inactividad
+    // Reinicia el timeout cada vez que haya actividad
+    let timeout = await state.get('timeout');
+    if (timeout) {
+        clearTimeout(timeout);
+        }
     
+    timeout = setTimeout(() => {
+        console.log("Entramos en el idle.");
+        return gotoFlow(flujoFinalizar);
+    }, 300000);  // 5 minutos de inactividad
+        
+    //Actualizamos el estado del timeout
+    await state.update({timeout: timeout});
+
   
 
     const mensaje = ctx.body; 
@@ -91,15 +71,3 @@ module.exports = addKeyword(EVENTS.ACTION).addAnswer("Perfecto, para continuar *
     
 
 });
-
-// Función para validar el nombre 
-function validarNombre(nombre) {
-    const regex = /^[a-zA-Z\s]*$/;
-    return regex.test(nombre) && nombre.trim().length > 0;
-  }
-
-// Función para validar el correo electrónico
-function validarCorreo(email) {
-    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return regex.test(email);
-  }
