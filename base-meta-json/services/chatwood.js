@@ -59,7 +59,7 @@ const createContact = async (phone_number, name, email ) => {
     } else if (data.message && data.message.includes("Email has already been taken")) {
         return 0;  // Devuelve 0 si el contacto ya existe
     } else {
-        throw new Error(`Unexpected error: ${data.message || "Unknown error"}`);
+        return 0;
     }
 };
 

@@ -29,7 +29,7 @@ module.exports = addKeyword(EVENTS.WELCOME)
                 //console.log(ctx);
                 
 
-                await gotoFlow(flujoCotizar);
+                return await gotoFlow(flujoCotizar);
                 
             }
             else if(respuesta === '2'){

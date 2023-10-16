@@ -3,14 +3,50 @@ const {sendMessageChatWood, createContact, searchContact, listAgents, listTeams,
 const INBOX_ID = process.env.INBOX_ID;
 const ACCOUNT_ID = process.env.ACCOUNT_ID;
 
-module.exports = addKeyword(EVENTS.ACTION).addAnswer("Un ejecutivo se contactara contigo a la brevedad")
-.addAction( async (ctx, { state, provider, flowDynamic, fallBack,gotoFlow}) => {
-           
+const flujoFinalizar = addKeyword(EVENTS.ACTION).addAnswer("El chat ha finalizado por inactividad, si deseas volver a iniciar el chat, escribe *hola*");
+let timeout;
+
+module.exports = addKeyword(EVENTS.ACTION).addAnswer("Perfecto, para continuar *escribe tu nombre:*"
+,{capture:true}, async (ctx, {state, provider, flowDynamic, fallBack, gotoFlow}) => {
+
+    const nombre = ctx.body;
+    
+    
+    if(!validarNombre(nombre)){
+        await fallBack("Nombre inválido, por favor intentelo de nuevo");
+    }
+
+    await state.update({
+        nombre: nombre
+    });
+
+})
+.addAnswer("Ahora escribe *tu correo:*"
+,{capture:true}, async (ctx, {state, provider, flowDynamic, fallBack, gotoFlow}) => {
+
+    const email = ctx.body;
+    
+    
+    if(!validarCorreo(email)){
+        await fallBack("Correo inválido, por favor intentelo de nuevo");
+    }
+
+    await state.update({
+        email: email
+    });
+
+})
+.addAnswer("Perfecto, en breve un ejecutivo te atendera. *Mientras, escribe el motivo* por el que nos escribes: ",null, async (ctx, { state, provider, flowDynamic, fallBack,gotoFlow}) => {
+    
+    //Datos del cliente
+    const email = await state.get('email');
+    const nombre = await state.get('nombre');
+
     const numeroConSigno = `+${ctx.from}`; //Es lo que usaremos como source_id	
     const id_agente = 84679;
     const id_team = 4044;
     //Creamos un nuevo contacto, si existe, devuelve 0, sino devuelve el ID > 0
-    let id_contacto = await createContact(numeroConSigno);
+    let id_contacto = await createContact(numeroConSigno, nombre, email);
     
     //Si el contacto existe, entonces lo buscamos y obtenemos su ID
     if(id_contacto == 0){
@@ -25,16 +61,45 @@ module.exports = addKeyword(EVENTS.ACTION).addAnswer("Un ejecutivo se contactara
         id_conversacion: id_conversacion
         });
 
+    //Enviamos un mensaje a chatwoot para que la conversacion tenga contenido
+    mensaje = `Hola, me llame ${nombre} y necesito ayuda`;
+    await sendMessage(ACCOUNT_ID, id_conversacion, mensaje, 'incoming', true,"text" )
 
     
-}).addAction( {capture:true}, async (ctx, { state, provider, flowDynamic, fallBack,gotoFlow}) => {
+}).addAction( {capture:true, idle: 10000}, async (ctx, { inRef, state, provider, flowDynamic, fallBack,gotoFlow}) => {
+
+   
+   
+    clearTimeout(timeout);
+  // Reinicia el timeout cada vez que haya actividad
+  timeout = setTimeout(() => {
+    console.log("Entramos en el idle.");
+    gotoFlow(flujoFinalizar);
+  }, 300000);  // 5 minutos de inactividad
+    
+  
 
     const mensaje = ctx.body; 
-    const id_conversacion = state.get('id_conversacion');
+    const id_conversacion = await state.get('id_conversacion');
     await sendMessage(ACCOUNT_ID, id_conversacion, mensaje, 'incoming', true,"text" )
 
     if(mensaje != "salir"){
+        
         await fallBack();
     }
 
+    
+
 });
+
+// Función para validar el nombre 
+function validarNombre(nombre) {
+    const regex = /^[a-zA-Z\s]*$/;
+    return regex.test(nombre) && nombre.trim().length > 0;
+  }
+
+// Función para validar el correo electrónico
+function validarCorreo(email) {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return regex.test(email);
+  }
