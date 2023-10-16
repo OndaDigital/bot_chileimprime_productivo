@@ -259,41 +259,82 @@ async obtenerFormatoPorNombre(nombreProducto) {
 }
 
 
+
 /**
  * Obtener el precio de sellado.
  * @returns {number|null} - Retorna el precio de sellado o null si no se encuentra.
  */
 async obtenerPrecioSellado() {
-  try {
+    try {
       await this.doc.loadInfo();
       const sheet = this.doc.sheetsByIndex[0];
-      await sheet.loadCells("M17");  // Cargamos la celda del precio de sellado
-
-      const cellPrecioSellado = sheet.getCell(16, 12);  // Celda M17
+      await sheet.loadCells("M7");  // Cargamos la celda M7 del precio de sellado
+  
+      const cellPrecioSellado = sheet.getCell(6, 12);  // Celda M7
       return cellPrecioSellado.value;
-  } catch (err) {
+    } catch (err) {
       console.log(err);
       return null;  // En caso de error, retornamos null por defecto
+    }
   }
-}
+  
+  /**
+   * Obtener el precio de sellado y ojetillos.
+   * @returns {number|null} - Retorna el precio de sellado y ojetillos o null si no se encuentra.
+   */
+  async obtenerPrecioSelladoYOjetillos() {
+    try {
+      await this.doc.loadInfo();
+      const sheet = this.doc.sheetsByIndex[0];
+      await sheet.loadCells("N7");  // Cargamos la celda N7 del precio de sellado y ojetillos
+  
+      const cellPrecioSelladoYOjetillos = sheet.getCell(6, 13);  // Celda N7
+      return cellPrecioSelladoYOjetillos.value;
+    } catch (err) {
+      console.log(err);
+      return null;  // En caso de error, retornamos null por defecto
+    }
+  }
+  
+  
+
 
 /**
- * Obtener el precio de sellado y ojetillos.
- * @returns {number|null} - Retorna el precio de sellado y ojetillos o null si no se encuentra.
+ * Obtener el precio de Bolsillo.
+ * @returns {number|null} - Retorna el precio de Bolsillo o null si no se encuentra.
  */
-async obtenerPrecioSelladoYOjetillos() {
-  try {
+async obtenerPrecioBolsillo() {
+    try {
       await this.doc.loadInfo();
       const sheet = this.doc.sheetsByIndex[0];
-      await sheet.loadCells("N17");  // Cargamos la celda del precio de sellado y ojetillos
-
-      const cellPrecioSelladoYOjetillos = sheet.getCell(16, 13);  // Celda N17
-      return cellPrecioSelladoYOjetillos.value;
-  } catch (err) {
+      await sheet.loadCells("M9:M10");  // Cargamos un rango que incluye la celda M10
+  
+      const cellPrecioBolsillo = sheet.getCell(9, 12);  // Celda M10
+      return cellPrecioBolsillo.value;
+    } catch (err) {
       console.log(err);
       return null;  // En caso de error, retornamos null por defecto
+    }
   }
-}
+  
+  /**
+   * Obtener el precio de Ojetillo.
+   * @returns {number|null} - Retorna el precio de Ojetillo o null si no se encuentra.
+   */
+  async obtenerPrecioOjetillo() {
+    try {
+      await this.doc.loadInfo();
+      const sheet = this.doc.sheetsByIndex[0];
+      await sheet.loadCells("N9:N10");  // Cargamos un rango que incluye la celda N10
+  
+      const cellPrecioOjetillo = sheet.getCell(9, 13);  // Celda N10
+      return cellPrecioOjetillo.value;
+    } catch (err) {
+      console.log(err);
+      return null;  // En caso de error, retornamos null por defecto
+    }
+  }
+  
 
 /**
  * Obtener el tamaño límite de archivo para un producto específico.

@@ -19,10 +19,14 @@ const ServerHttp = require('./http/index.js');
 //Se inicia la conversacion con el correo
 const pedirCorreo = addKeyword(EVENTS.WELCOME).addAnswer("Hola, soy el asistente virtual de Chileimprime, para comenzar, *por favor ingresa tu correo electrónico*"
 ,{capture:true}, async (ctx, {state, provider, flowDynamic, fallBack, gotoFlow}) => {
-
+    
     const email = ctx.body;
     const nombre = ctx.pushName;
     const numero = ctx.from;
+    
+    //Time out necesario para que el bot no se quede esperando una respuesta
+    let timeout = null;
+    await state.update({timeout: timeout});
     
     if(!validarCorreo(email)){
         await fallBack("Correo inválido, por favor inténtelo de nuevo");

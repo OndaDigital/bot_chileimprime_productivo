@@ -1,23 +1,23 @@
 [
   {
-    "ref": "9fe48984-d4b8-4dd5-8b38-d1f538c21657",
-    "keyword": "d421474f1e4f83e5f63f266eade17dee",
-    "answer": "Hola",
+    "ref": "8932ee82-df96-45ff-8205-01b03b8433e7",
+    "keyword": "76785eb9bcbdfba652f0debc9ecd82aa",
+    "answer": "hola",
     "options": {},
     "from": "56937782810",
-    "refSerialize": "c22e4066d61d81721def9b25d8a397e8"
+    "refSerialize": "79e7fc16f7fb85373fd25a99390f44c0"
   },
   {
-    "ref": "f9743cb5-fe28-4186-99a9-cfae151fb52d",
-    "keyword": "c22e4066d61d81721def9b25d8a397e8",
-    "answer": "fdsfsdfsdf",
+    "ref": "c2cdff90-4345-4d4c-9144-62fd752f2cb3",
+    "keyword": "79e7fc16f7fb85373fd25a99390f44c0",
+    "answer": "sdf",
     "options": {},
     "from": "56937782810",
-    "refSerialize": "f6975c3d1338ed0c443367fb42c93f44"
+    "refSerialize": "2ad216a1377408dccace588bf2e553da"
   },
   {
-    "ref": "ans_d3771408-88fe-487a-8208-5f0c45449b9a",
-    "keyword": "key_68657f87-73ac-4d21-810b-f222a307be8d",
+    "ref": "ans_b929b3d1-a2e8-4def-9dd9-53980c4f0f3c",
+    "keyword": "key_02b15519-8437-4237-bb7b-5a9b43a530da",
     "answer": "Hola, soy el asistente virtual de Chileimprime, para comenzar, *por favor ingresa tu correo electrónico*",
     "options": {
       "media": null,
@@ -30,21 +30,47 @@
       "keyword": {},
       "callback": true
     },
-    "refSerialize": "a019aa478278e35b7ca0704480d7d6fa",
+    "refSerialize": "eb0a4ce74a9561cd41064d817c859687",
     "from": "56937782810"
   },
   {
-    "ref": "328bdc61-8ccb-4f12-9dea-0d02fb1851ea",
-    "keyword": "a019aa478278e35b7ca0704480d7d6fa",
-    "answer": "fsdfsdfsdf@gmail.com",
+    "ref": "b5d631a9-3b74-4b05-a89b-0463832f36f3",
+    "keyword": "eb0a4ce74a9561cd41064d817c859687",
+    "answer": "1",
     "options": {},
     "from": "56937782810",
-    "refSerialize": "de4aedb1b35ec4cb6ff5db4ed9f04947"
+    "refSerialize": "290236b1d481a790a200ea6e94b2122a"
   },
   {
-    "ref": "ans_ca348acb-3918-4161-833e-c06e311ab674",
-    "keyword": "key_ecf584ff-bd8a-454b-8014-36a0a3f5dac4",
-    "answer": "*Muchas gracias!! ahora escoge una opción del menú* \n\n👉 *1.* Iniciar una cotización (*La forma más rapida*)\n👉 *2.* Horarios y dirección del local\n👉 *3.* Consultar por el estado de un pedido\n👉 *4.* Necesito ayuda, tengo dudas con el archivo o formato\n👉 *5.* Hablar con un *ejecutivo* (tiempo de respuesta de 1 a 2 horas)\n📌 Escribe *menu* en cualquier momento para volver a ver este menú ",
+    "ref": "ans_b929b3d1-a2e8-4def-9dd9-53980c4f0f3c",
+    "keyword": "key_02b15519-8437-4237-bb7b-5a9b43a530da",
+    "answer": "Correo inválido, por favor inténtelo de nuevo",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": true,
+      "child": null,
+      "delay": 0,
+      "idle": null,
+      "nested": [],
+      "keyword": {},
+      "callback": true
+    },
+    "refSerialize": "eb0a4ce74a9561cd41064d817c859687",
+    "from": "56937782810"
+  },
+  {
+    "ref": "26f5bf4a-168f-4b8e-8a46-37d152555254",
+    "keyword": "eb0a4ce74a9561cd41064d817c859687",
+    "answer": "fdxxcxcv@FMDFSD.COM",
+    "options": {},
+    "from": "56937782810",
+    "refSerialize": "3d9ca5f32d766085afbcfcd4ed07a3d1"
+  },
+  {
+    "ref": "ans_e987d95d-bf59-4cb5-a1c8-5ccdaef097cc",
+    "keyword": "key_f738d62d-984a-48b0-8ace-b18c8f4107f9",
+    "answer": "*Muchas gracias!! ahora escoge una opción del menú* \n\n👉 *1.* Iniciar una cotización ( *La forma más rapida* )\n👉 *2.* Horarios y dirección del local\n👉 *3.* Consultar por el estado de un pedido\n👉 *4.* Necesito ayuda, tengo dudas con el archivo o formato\n👉 *5.* Hablar con un *ejecutivo* (tiempo de respuesta de 1 a 2 horas)\n📌 Escribe *menu* en cualquier momento para volver a ver este menú ",
     "options": {
       "media": null,
       "buttons": [],
@@ -56,20 +82,20 @@
       "keyword": {},
       "callback": true
     },
-    "refSerialize": "6159cf381f78a3bafdb5a08e3b63f673",
+    "refSerialize": "869db0dd33b2c764dc1da8c19140f4a4",
     "from": "56937782810"
   },
   {
-    "ref": "b699e505-b46a-4a5a-8067-ce00a197b966",
-    "keyword": "6159cf381f78a3bafdb5a08e3b63f673",
+    "ref": "9f831eaa-51ff-4a42-925b-28f92ad7c2ef",
+    "keyword": "869db0dd33b2c764dc1da8c19140f4a4",
     "answer": "1",
     "options": {},
     "from": "56937782810",
     "refSerialize": "290236b1d481a790a200ea6e94b2122a"
   },
   {
-    "ref": "ans_1bc42aad-5924-419e-ba1d-6e31d69f1431",
-    "keyword": "key_53709633-574a-4a65-a655-75aff66e8f2c",
+    "ref": "ans_0462d77a-c692-43d4-ba9e-d21685a0f884",
+    "keyword": "key_d9683a7e-a7d9-4b28-9011-fe8e267aaba5",
     "answer": "🔍 Cargando catálogo... 📔 Por favor, espera 🙏 ¡No escribas todavía!! ⏳ Esto puede tardar unos segundos... ⏱️",
     "options": {
       "media": null,
@@ -82,12 +108,12 @@
       "keyword": {},
       "callback": true
     },
-    "refSerialize": "3899af6ec65a8daeefc5fee788ce191c",
+    "refSerialize": "6219f66fecd23f62776ccf2b5cd6a711",
     "from": "56937782810"
   },
   {
-    "ref": "ans_eece751a-97bf-48bd-87bc-5e77ab1fbea3",
-    "keyword": "ans_1bc42aad-5924-419e-ba1d-6e31d69f1431",
+    "ref": "ans_06fb3ac1-e8b1-40c3-be6c-a5072491e687",
+    "keyword": "ans_0462d77a-c692-43d4-ba9e-d21685a0f884",
     "answer": "En base al catalogo, escribe en el chat el nombre del servicio para continuar (Solo puede ser 1)",
     "options": {
       "media": null,
@@ -100,7 +126,257 @@
       "keyword": {},
       "callback": true
     },
-    "refSerialize": "d1d7b78fb65d107dcff5eb14782a2ad7",
+    "refSerialize": "06ae16510f3517e4722419438bdb0092",
     "from": "56937782810"
+  },
+  {
+    "ref": "d3e98ae3-779d-4881-899e-e9a81582b391",
+    "keyword": "06ae16510f3517e4722419438bdb0092",
+    "answer": "pvc",
+    "options": {},
+    "from": "56937782810",
+    "refSerialize": "e08988e5f3f53ad351f618628dce0c5f"
+  },
+  {
+    "ref": "3a393907-7d96-4572-addc-f4b5230fe497",
+    "answer": "Tienes varias opciones, por favor selecciona *una especificando el número*:\n\n*1*. PVC Alta Definición\n*2*. PVC 11 Oz mt2\n*3*. PVC 13 Oz mt2 - Promoción solo Local\n*4*. PVC 13 Oz mt2\n*5*. PVC Blackout\n",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": false,
+      "delay": 0
+    },
+    "from": "56937782810",
+    "refSerialize": "5f055c846c5543860625ba386310b5d3"
+  },
+  {
+    "ref": "ans_4be0dbc0-d36a-47ef-8324-7ea886cfb7fa",
+    "keyword": "ans_06fb3ac1-e8b1-40c3-be6c-a5072491e687",
+    "answer": "__capture_only_intended__",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": true,
+      "child": null,
+      "delay": 0,
+      "idle": null,
+      "nested": [],
+      "keyword": {},
+      "callback": true
+    },
+    "refSerialize": "b96387ca4d27e800b7bb8f98ca3b96dc",
+    "from": "56937782810"
+  },
+  {
+    "ref": "7f5ecb1d-b922-40b8-b676-b50d77f7cbf4",
+    "keyword": "b96387ca4d27e800b7bb8f98ca3b96dc",
+    "answer": "1",
+    "options": {},
+    "from": "56937782810",
+    "refSerialize": "290236b1d481a790a200ea6e94b2122a"
+  },
+  {
+    "ref": "ans_235f0af9-eea1-40ca-b4e0-57a8fa20e063",
+    "keyword": "key_e6d97668-db53-4221-acbd-7a5ef208ee44",
+    "answer": "__call_action__",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": false,
+      "child": null,
+      "delay": 0,
+      "idle": null,
+      "nested": [],
+      "keyword": {},
+      "callback": true
+    },
+    "refSerialize": "e465ed109a2e26518986964debe39a2a",
+    "from": "56937782810"
+  },
+  {
+    "ref": "ans_4af6e357-474f-4ae4-b94c-bbc021661506",
+    "keyword": "key_e1068c97-a1d6-4479-84bc-e9b340dc0c1f",
+    "answer": "__call_action__",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": false,
+      "child": null,
+      "delay": 0,
+      "idle": null,
+      "nested": [],
+      "keyword": {},
+      "callback": true
+    },
+    "refSerialize": "d4fbd7dee7d8c7ffc4b78de850e697b8",
+    "from": "56937782810"
+  },
+  {
+    "ref": "e9d51343-fdca-4223-9b13-b176311ef8f8",
+    "answer": "Para *PVC Alta Definición* selecciona la letra con el *ancho que deseas imprimir* y ten en cuenta el ancho total del rollo:\n\n*A.* 1.5 metros 🖨️ ( _ancho total 1.6m_ )\n*B.* 1.6 metros 🖨️ ( _ancho total 3.2m_ )\n",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": false,
+      "delay": 0
+    },
+    "from": "56937782810",
+    "refSerialize": "f847b8c4edc0d02fb7f17dc9852edce0"
+  },
+  {
+    "ref": "ans_1f30c193-957f-4764-8c65-8dd8f9bc785a",
+    "keyword": "ans_4af6e357-474f-4ae4-b94c-bbc021661506",
+    "answer": "__capture_only_intended__",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": true,
+      "child": null,
+      "delay": 0,
+      "idle": null,
+      "nested": [],
+      "keyword": {},
+      "callback": true
+    },
+    "refSerialize": "0bb6da64449963b84cf6b5ffd6311952",
+    "from": "56937782810"
+  },
+  {
+    "ref": "8226399a-c76f-4b00-b7d0-dfaa4eec1847",
+    "keyword": "0bb6da64449963b84cf6b5ffd6311952",
+    "answer": "A",
+    "options": {},
+    "from": "56937782810",
+    "refSerialize": "dda4ec89253a208a2baea334f5233f20"
+  },
+  {
+    "ref": "3d910231-7bcc-42de-985a-e1ef759eb6e0",
+    "answer": "Seleccionaste: *1.5 metros de ancho.* ✔️\n\nAhora, por favor *ingresa la altura en metros*\n(Ingresar un numero: ejemplo: *2.5*):",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": false,
+      "delay": 0
+    },
+    "from": "56937782810",
+    "refSerialize": "4b7845797d8e1f8c71e1ced8064c4008"
+  },
+  {
+    "ref": "ans_da871443-6105-48fb-a6ab-1547b9ac77ed",
+    "keyword": "ans_1f30c193-957f-4764-8c65-8dd8f9bc785a",
+    "answer": "__capture_only_intended__",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": true,
+      "child": null,
+      "delay": 0,
+      "idle": null,
+      "nested": [],
+      "keyword": {},
+      "callback": true
+    },
+    "refSerialize": "0e608d2f8bc3c6d2808c057423b8f036",
+    "from": "56937782810"
+  },
+  {
+    "ref": "9367e872-2327-40f8-9109-13728bb6d1d9",
+    "keyword": "0e608d2f8bc3c6d2808c057423b8f036",
+    "answer": "3",
+    "options": {},
+    "from": "56937782810",
+    "refSerialize": "7af65864494b12f0f7ef00589f4d3979"
+  },
+  {
+    "ref": "5303c6f7-0089-4f92-84df-e676086ecd56",
+    "answer": "*¿Deseas agregar alguna terminación adicional?* \n     A. Sellado - $1000 el m2\n     B. Sellado y ojetillos - $2000 el m2\n     C. Bolsillo - $1000 el m2\n     D. Ojetillo - $1000 el m2\n     E. No \n\n    ",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": false,
+      "delay": 0
+    },
+    "from": "56937782810",
+    "refSerialize": "0880e4917ec2b41a3070e3b518d2aa04"
+  },
+  {
+    "ref": "ans_a562b753-e0ce-4221-a601-8ce7a3451040",
+    "keyword": "ans_da871443-6105-48fb-a6ab-1547b9ac77ed",
+    "answer": "__capture_only_intended__",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": true,
+      "child": null,
+      "delay": 0,
+      "idle": null,
+      "nested": [],
+      "keyword": {},
+      "callback": true
+    },
+    "refSerialize": "224439768e2a42e104e2aad8d97636ca",
+    "from": "56937782810"
+  },
+  {
+    "ref": "a8f9c242-3215-429a-a96c-dec61f855a77",
+    "keyword": "224439768e2a42e104e2aad8d97636ca",
+    "answer": "B",
+    "options": {},
+    "from": "56937782810",
+    "refSerialize": "7d1f4c73fe1e92b549bdacd1e4381e5f"
+  },
+  {
+    "ref": "1210a255-a9a0-48c5-93aa-bd3e82cdbdc4",
+    "answer": "🖨️ *DETALLES DE TU COTIZACIÓN* 🖨️\n\n    🔹 *Producto/Servicio:*\n    - Tipo de Servicio: PVC Alta Definición\n    - Ancho del rollo: 1.5 metros\n    - Altura: 3 metros\n    - Área total: 4.5 m2\n    - Extra: undefined por $2.000 el m2.\n    \n    🔹 *Desglose de Costos:*\n    - Precio por m2: $5.000\n    - Subtotal sin extras: $22.500\n    - Total extras: $9.000\n    - Subtotal con extras: $31.500\n    - IVA 19%: $5.985\n\n    *TOTAL A PAGAR:* $37.485\n    \n    🕐 Esta cotización es válida por 24 horas.",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": false,
+      "delay": 0
+    },
+    "from": "56937782810",
+    "refSerialize": "f8641791078dde3a9f64d550f4fa48ec"
+  },
+  {
+    "ref": "ans_d4e65f34-e925-477a-b7d2-3c8acd3545a5",
+    "keyword": "ans_a562b753-e0ce-4221-a601-8ce7a3451040",
+    "answer": "__call_action__",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": false,
+      "child": null,
+      "delay": 0,
+      "idle": null,
+      "nested": [],
+      "keyword": {},
+      "callback": true
+    },
+    "refSerialize": "475e28a2bf6be289e05438b1c22c7093",
+    "from": "56937782810"
+  },
+  {
+    "ref": "6990f476-be62-4f42-9ae6-1496d3203c0c",
+    "answer": "✅ *Tu cotización ha sido cargada con éxito a nuestro sistema.*\n🚨 *Recuerda* que no está completa, todavía debes venir a la tienda con tu diseño o enviarlo por correo para finalizar la cotización.\n\n🏬 *Tienda:* Av. El Parrón 579, La Cisterna.\n⏰ *Horario:* \n- Lunes a Viernes: 09:30hrs - 18:30hrs\n- Sábados: 09:30 - 16:00hrs\n📧 *Correo:* chileimprime13@gmail.com\n",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": false,
+      "delay": 0
+    },
+    "from": "56937782810",
+    "refSerialize": "aca24f16b1ef25195ff3d228f9430e76"
+  },
+  {
+    "ref": "1bdd1d20-2ab1-4c39-9579-d3723d1a69de",
+    "answer": "🖌️ Si tienes dudas acerca del diseño, puedes digitar la opción *4* del menú principal.\n❓ Si tienes otro tipo de dudas o preguntas, marca la opción *5* para hablar con un ejecutivo.",
+    "options": {
+      "media": null,
+      "buttons": [],
+      "capture": false,
+      "delay": 0
+    },
+    "from": "56937782810",
+    "refSerialize": "17e62229075f00bd6e6e6e273bf09008"
   }
 ]

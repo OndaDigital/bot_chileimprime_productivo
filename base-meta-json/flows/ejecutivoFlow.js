@@ -9,8 +9,6 @@ const flujoFinalizar = addKeyword(EVENTS.ACTION).addAnswer("El chat ha finalizad
 module.exports = addKeyword(EVENTS.ACTION)
 .addAnswer("Perfecto, en breve un ejecutivo te atendera. *Mientras, escribe el motivo* por el que nos escribes: ",null, async (ctx, { state, provider, flowDynamic, fallBack,gotoFlow}) => {
     
-    let timeout = null;
-    await state.update({timeout: timeout});
     //Datos del cliente
     const email = await state.get('email');
     const nombre = await state.get('nombre');
@@ -42,17 +40,20 @@ module.exports = addKeyword(EVENTS.ACTION)
     
 }).addAction( {capture:true}, async (ctx, { state, provider, flowDynamic, fallBack,gotoFlow}) => {
 
-   
+    const horas = 10;
+    const msEnUnaHora = 3600000;
+    const delay = horas * msEnUnaHora;
+
     // Reinicia el timeout cada vez que haya actividad
     let timeout = await state.get('timeout');
     if (timeout) {
         clearTimeout(timeout);
-        }
+    }
     
     timeout = setTimeout(() => {
         console.log("Entramos en el idle.");
         return gotoFlow(flujoFinalizar);
-    }, 300000);  // 5 minutos de inactividad
+    }, delay);  // 10 horas
         
     //Actualizamos el estado del timeout
     await state.update({timeout: timeout});

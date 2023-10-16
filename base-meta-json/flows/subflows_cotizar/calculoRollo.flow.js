@@ -10,19 +10,24 @@ const flujoSubirPedido = require('./subirPedido.flow');
 
 module.exports = addKeyword(EVENTS.ACTION)
 .addAction(async (ctx, {state, provider, flowDynamic, fallBack, gotoFlow}) => {
-    const servicio_seleccionado = state.get('servicio_seleccionado');
+    const servicio_seleccionado = await state.get('servicio_seleccionado');
     const medidas = await googelSheet.consultarMedidasDisponibles(servicio_seleccionado);
     let anchosImprimibles = medidas.slice(1).map(medida => medida.imprimible);
+    let unidad_ancho;
     await state.update({ anchosImprimibles: anchosImprimibles });
 
     let mensaje_seleccion = `Para *${servicio_seleccionado}* selecciona la letra con el *ancho que deseas imprimir* y ten en cuenta el ancho total del rollo:\n\n`;
     anchosImprimibles.forEach((ancho, index) => {
-        mensaje_seleccion += `*${LETRAS[index]}.* ${ancho} metros 🖨️ ( _ancho total ${medidas[index + 1].material}m_ )\n`;
+        unidad_ancho = ancho === 1 ? 'metro' : 'metros';
+
+        mensaje_seleccion += `*${LETRAS[index]}.* ${ancho} ${unidad_ancho} 🖨️ ( _ancho total ${medidas[index + 1].material}m_ )\n`;
     });
+
+    await state.update({unidad_ancho: unidad_ancho});
      await flowDynamic(mensaje_seleccion);  
 })
 .addAction({ capture: true }, async (ctx, { state, flowDynamic, fallBack, gotoFlow }) => {
-
+    const unidad_ancho = await state.get('unidad_ancho');
     const opcionSeleccionada = ctx.body.toUpperCase();
     const anchosImprimibles = state.get('anchosImprimibles');
     const indexSeleccionado = LETRAS.indexOf(opcionSeleccionada);
@@ -34,7 +39,7 @@ module.exports = addKeyword(EVENTS.ACTION)
 
     const anchoSeleccionado = anchosImprimibles[indexSeleccionado];
     await state.update({ anchoSeleccionado: anchoSeleccionado });
-    const mensaje = `Seleccionaste: *${anchoSeleccionado} metros de ancho.*\n\nAhora, por favor *ingresa la altura en metros*\n(Ingresar un numero: ejemplo: *2.5*):`;
+    const mensaje = `Seleccionaste: *${anchoSeleccionado} ${unidad_ancho} de ancho.* ✔️\n\nAhora, por favor *ingresa la altura en metros*\n(Ingresar un numero: ejemplo: *2.5*):`;
     await flowDynamic(mensaje);
 })
 
@@ -59,149 +64,156 @@ module.exports = addKeyword(EVENTS.ACTION)
     const precioTotal = anchoSeleccionado * alturaIngresada * parseFloat(precioPorMetro);
     await state.update({ precioTotal: precioTotal });
     await state.update({ precioPorMetro: precioPorMetro });
+    //Obtener valores de ojetillo, sellado, bolsillo, etc
+    const precioOjetillo = await googelSheet.obtenerPrecioOjetillo();
+    const precioSellado = await googelSheet.obtenerPrecioSellado();
+    const precioSelladoYOjetillos = await googelSheet.obtenerPrecioSelladoYOjetillos();
+    const precioBolsillo = await googelSheet.obtenerPrecioBolsillo();
+    
+    //Los guardamos en el state
+    await state.update({ precioOjetillo: precioOjetillo,
+                        precioSellado: precioSellado,
+                        precioSelladoYOjetillos: precioSelladoYOjetillos,
+                        precioBolsillo: precioBolsillo
+        });
 
     // Saltamos la información detallada de la cotización y pasamos directamente a la pregunta
     await flowDynamic(`*¿Deseas agregar alguna terminación adicional?* 
-     A. Sellado
-     B. Sellado y ojetillos
-     C. No \n
+     A. Sellado - $${precioSellado} el m2
+     B. Sellado y ojetillos - $${precioSelladoYOjetillos} el m2
+     C. Bolsillo - $${precioBolsillo} el m2
+     D. Ojetillo - $${precioOjetillo} el m2
+     E. No \n
     `);
 
-}).addAction({ capture: true }, async (ctx, { state, flowDynamic, fallBack, gotoFlow }) => {
+}).addAction({ capture: true }, async (ctx, { state, flowDynamic, fallBack }) => {
     const opcionSeleccionada = ctx.body.toUpperCase();
     const precioTotal = await state.get('precioTotal');
     const anchoSeleccionado = await state.get('anchoSeleccionado');
     const alturaIngresada = await state.get('alturaSeleccionada');
     const precioPorMetro = await state.get('precioPorMetro');
+    const unidad_ancho = await state.get('unidad_ancho');
+    const unidad_altura = (alturaIngresada === 1) ? "metro" : "metros";
+    const servicio_seleccionado = await state.get('servicio_seleccionado');
 
     let costoExtra = 0;
-    if (opcionSeleccionada === 'A') {
-        costoExtra = 1000; // coste adicional por m2 para sellado
-        await state.update({ extra: 'Sellado' });
-        await state.update({ extra_precio: costoExtra });
-        const precioTotalConExtra = precioTotal + (anchoSeleccionado * alturaIngresada * costoExtra);
-        await state.update({ precioTotalConExtra: precioTotalConExtra });
+    let extraDescription = "";
+
+    const calculos = {
+        'A': async () => {
+            costoExtra = await state.get('precioSellado');
+            console.log(`Precio sellado: ${costoExtra}`);
+            extraDescription = 'Sellado';
+        },
+        'B': async () => {
+            costoExtra = await state.get('precioSelladoYOjetillos');
+            console.log(`Precio sellado y ojetillos: ${costoExtra}`);
+            extraDescription = 'Sellado y ojetillos';
+        },
+        'C': async () => {
+            costoExtra = await state.get('precioBolsillo');
+            console.log(`Precio Bolsillo: ${costoExtra}`);
+            extraDescription = 'Bolsillo';
+        },
+        'D': async () => {
+            costoExtra = await state.get('precioOjetillo');
+            console.log(`Precio Ojetillo: ${costoExtra}`);
+            extraDescription = 'Ojetillo';
+        },
+        'E': async () => {
+            costoExtra = 0;
+            extraDescription = 'No';
+        }
+    };
+
+    if (calculos[opcionSeleccionada]) {
+        await calculos[opcionSeleccionada]();
         
-    
-
-        await flowDynamic(`🖨️ *Detalles de tu cotización* 🖨️
-
-- Ancho: ${state.get('anchoSeleccionado')} metros
-- Altura: ${state.get('alturaSeleccionada')} metros
-📏 Servicio: PVC Alta Definición
-💰 Precio por metro: $${precioPorMetro}
-🔥 Precio Total: $${precioTotal}
-🔥 Extras: Sellado por: ${costoExtra} el m2.
-🔥 Precio Total con extras: ${precioTotalConExtra}
-Esta cotización es válida por 24 horas. 
-
-*Desea continuar con el archivo de impresión? (Si/No)*
-        `);
-
-        //await gotoFlow(flujoIndicaciones);
-
-    } else if (opcionSeleccionada === 'B') {
-        costoExtra = 2000; // coste adicional por m2 para sellado y ojetillos
-        await state.update({ extra: 'Sellado y ojetillos' });
-        await state.update({ extra_precio: costoExtra });
         const precioTotalConExtra = precioTotal + (anchoSeleccionado * alturaIngresada * costoExtra);
-        await state.update({ precioTotalConExtra: precioTotalConExtra });
+        const iva19porciento = precioTotalConExtra * 0.19;
+        const totalConIva = precioTotalConExtra + iva19porciento;
 
-        await flowDynamic(`🖨️ *Detalles de tu cotización* 🖨️
+        await state.update({ 
+            extra: extraDescription, 
+            extra_precio: costoExtra, 
+            precioTotalConExtra: precioTotalConExtra 
+        });
 
-- Ancho: ${state.get('anchoSeleccionado')} metros
-- Altura: ${state.get('alturaSeleccionada')} metros
-📏 Servicio: PVC Alta Definición
-💰 Precio por metro: $${precioPorMetro}
-🔥 Precio Total: $${precioTotal}
-🔥 Extras: Sellado y ojetillos por: ${costoExtra} el m2.
-🔥 Precio Total con extras: ${precioTotalConExtra}
-Esta cotización es válida por 24 horas. 
+        await flowDynamic(generarDetallesCotizacion({
+            servicio_seleccionado,
+            anchoSeleccionado,
+            unidad_ancho,
+            alturaIngresada,
+            unidad_altura,
+            costoExtra,
+            precioPorMetro,
+            precioTotal,
+            precioTotalConExtra,
+            iva19porciento,
+            totalConIva
+        }));
 
-*Desea continuar con el archivo de impresión? (Si/No)*
-`);
-        //await gotoFlow(flujoIndicaciones);
-
-    } else if(opcionSeleccionada === 'C'){
-
-        await state.update({ extra: 'No' });
-        await state.update({ extra_precio: 0 });
-        await state.update({ precioTotalConExtra: 0 });
-
-
-await flowDynamic(`🖨️ *Detalles de tu cotización* 🖨️
-
-- Ancho: ${state.get('anchoSeleccionado')} metros
-- Altura: ${state.get('alturaSeleccionada')} metros
-📏 Servicio: PVC Alta Definición
-💰 Precio por metro: $${precioPorMetro}
-🔥 Extras: No
-🔥 Precio Total: $${precioTotal}
-Esta cotización es válida por 24 horas. 
-
-*Desea continuar con el archivo de impresión? (Si/No)*
-`);
-        //await gotoFlow(flujoIndicaciones);
-    }
-    
-    else {
-        await fallBack("Opción no válida. Por favor, selecciona A, B o C.");
-        return;
-    }
-
-    
-})
-.addAction({ capture: true }, async (ctx, { state, flowDynamic, fallBack, gotoFlow }) => {
-    const respuesta = ctx.body.toLowerCase();
-    if (respuesta === 'si') {
-        const anchoSeleccionado = state.get('anchoSeleccionado');
-        const alturaIngresada = state.get('alturaSeleccionada');
         
-        await flowDynamic(`Entendido. 
-
-Primero, hablemos del diseño:
-
-Tu diseño debe tener medidas exactas de *${anchoSeleccionado * 100} cm x ${alturaIngresada * 100} cm*. Esta es la dimensión que seleccionaste. Ahora, hablemos sobre los DPI (puntos por pulgada) y cómo afectan tu diseño. *¿Te parece bien?*`);
+        // await gotoFlow(flujoIndicaciones);
     } else {
-        await flowDynamic("Entendido. Si cambias de opinión o necesitas más información, no dudes en contactarnos.");
+        await fallBack("Opción no válida. Por favor, selecciona A, B, C, D o E");
         return;
     }
 })
-.addAction({ capture: true }, async (ctx, { state, flowDynamic, fallBack, gotoFlow }) => {
-    const respuesta = ctx.body.toLowerCase();
-    
-    await flowDynamic(`Excelente.
+.addAction(async(ctx,{flowDynamic, state, fallBack, gotoFlow}) => {
 
-Puedes ajustar los DPI de tu diseño para mejorar la calidad de impresión. A mayor DPI, mejor calidad, pero también mayor tamaño de archivo. Por ejemplo, si con 72DPI tu diseño pesa cerca de 100MB, al aumentar los DPI a 150, el tamaño puede subir a cerca de 200MB. Es esencial que ajustes cuidadosamente los DPI para no superar los 300MB permitidos.
+      // Agregar espera de 10 segundos
+      await new Promise(resolve => setTimeout(resolve, 5000));
 
-Con eso en mente, ¿qué deseas hacer a continuación?
+      await flowDynamic(`✅ *Tu cotización ha sido cargada con éxito a nuestro sistema.*
+🚨 *Recuerda* que no está completa, todavía debes venir a la tienda con tu diseño o enviarlo por correo para finalizar la cotización.
 
-1. 📤 Subir el archivo por aquí y finalizar la cotización. (No disponible)
-2. 📍 Venir a la tienda a finalizar la cotización pero con el archivo.
-3. 📧 Enviar el archivo por correo.
-4. 💼 Solicitar a nuestro diseñador un diseño por $15.000.`);
+🏬 *Tienda:* Av. El Parrón 579, La Cisterna.
+⏰ *Horario:* 
+- Lunes a Viernes: 09:30hrs - 18:30hrs
+- Sábados: 09:30 - 16:00hrs
+📧 *Correo:* chileimprime13@gmail.com
+`);
+      
+
+     // Agregar espera de 2 segundos
+     await new Promise(resolve => setTimeout(resolve, 2000));
+
+     await flowDynamic(`🖌️ Si tienes dudas acerca del diseño, puedes digitar la opción *4* del menú principal.
+❓ Si tienes otro tipo de dudas o preguntas, marca la opción *5* para hablar con un ejecutivo.`);
+
     
 })
-.addAction({ capture: true }, async (ctx, { state, flowDynamic, fallBack, gotoFlow }) => {
-    const opcionSeleccionada = ctx.body;
-    switch (opcionSeleccionada) {
-        case "1":
-            await fallBack("Estamos trabajando en esta caracteristica, intenta con otra opción (2, 3 o 4).");
-            break;
-        case "2":
-            await flowDynamic("Perfecto, recuerda venir con tu diseño a la siguiente dirección:\n📍 *Av. El Parrón 579, La Cisterna* \n🕐 *Horarios de atención:* Lunes a sábados de 10am hasta las 18:00hrs.\nCorreo: chileimprime13.cl\nSitio web: chileimprime.cl");
-            //await flowDynamic("Ahora  puedes subir tu diseño a la siguiente dirección: https://chileimprime.cl/subir-archivo/");
-            await flowDynamic("Perfecto, tu orden ha sido subida a nuestro sistema, solo debes venir a la tienda con tu diseño, tienes 24 horas desde iniciada esta cotizacion");
-            return await gotoFlow(flujoSubirPedido);
-            break;
-        case "3":
-            await flowDynamic("Perfecto, envía tu diseño a chileimprime13@gmail.com y envia los detalles de tu cotización. te responderemos a la brevedad.");
-            break;
-        case "4":
-            await fallBack("Nuestro diseñador no se encuentra disponible en este momento. Por favor, seleccona otra opción.");
-            return;
-        default:
-            await fallBack("Opción no válida. Por favor, selecciona una opción de la lista (2, 3 o 4).");
-            return;
-    }
-});
+
+
+function numeroCLP(numbero) {
+    return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(numbero).replace("CLP", "").trim();
+}
+
+//Redondear a 2 decimeales
+function redondear(numero) {
+    return Math.round(numero * 100) / 100;
+}
+
+
+function generarDetallesCotizacion(data) {
+    return `🖨️ *DETALLES DE TU COTIZACIÓN* 🖨️
+
+    🔹 *Producto/Servicio:*
+    - Tipo de Servicio: ${data.servicio_seleccionado}
+    - Ancho del rollo: ${data.anchoSeleccionado} ${data.unidad_ancho}
+    - Altura: ${data.alturaIngresada} ${data.unidad_altura}
+    - Área total: ${redondear(data.anchoSeleccionado * data.alturaIngresada)} m2
+    - Extra: ${data.extraDescription} por ${numeroCLP(data.costoExtra)} el m2.
+    
+    🔹 *Desglose de Costos:*
+    - Precio por m2: ${numeroCLP(data.precioPorMetro)}
+    - Subtotal sin extras: ${numeroCLP(data.precioTotal)}
+    - Total extras: ${numeroCLP(data.anchoSeleccionado * data.alturaIngresada * data.costoExtra)}
+    - Subtotal con extras: ${numeroCLP(data.precioTotalConExtra)}
+    - IVA 19%: ${numeroCLP(data.iva19porciento)}
+
+    *TOTAL A PAGAR:* ${numeroCLP(data.totalConIva)}
+    
+    🕐 Esta cotización es válida por 24 horas.`;
+}

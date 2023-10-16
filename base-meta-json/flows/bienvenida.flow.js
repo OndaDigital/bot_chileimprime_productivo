@@ -2,13 +2,23 @@ const flujoCotizar = require('./cotizar.flow');
 const flujoEjecutivo = require('./ejecutivoFlow');
 const {addKeyword, EVENTS} = require('@bot-whatsapp/bot')
 
+const tiendaInfo = {
+    direccion: "Av. El Parrón 579, La Cisterna",
+    telefono: "+569 7108 9933",
+    correo: "chileimprime13@gmail.com",
+    horario: {
+        diasLaborables: "Lunes a Viernes 09:30hrs - 18:30hrs",
+        sabados: "09:30 - 16:00hrs"
+    }
+};
 
+const finalizarBienvenida = addKeyword(EVENTS.ACTION).addAnswer("Gracias por escribirnos, si deseas volver a iniciar el chat, escribe *hola*");
 
 module.exports = addKeyword(EVENTS.ACTION)
     .addAnswer(
         [
             '*Muchas gracias!! ahora escoge una opción del menú* \n',
-            '👉 *1.* Iniciar una cotización (*La forma más rapida*)',
+            '👉 *1.* Iniciar una cotización ( *La forma más rapida* )',
             '👉 *2.* Horarios y dirección del local',
             '👉 *3.* Consultar por el estado de un pedido',
             '👉 *4.* Necesito ayuda, tengo dudas con el archivo o formato',
@@ -31,7 +41,24 @@ module.exports = addKeyword(EVENTS.ACTION)
                 
             }
             else if(respuesta === '2'){
-                await flowDynamic('horarios');
+                
+const mensaje = `*Hola, a continuación te dejo los datos de la tienda* \n
+📍 *Dirección*: ${tiendaInfo.direccion}
+📞 *Whatsapp*: ${tiendaInfo.telefono}
+✉️ *Correo*: ${tiendaInfo.correo}
+⏰ *Horario Laboral*: ${tiendaInfo.horario.diasLaborables}
+📅 *Sábados*: ${tiendaInfo.horario.sabados}
+`;
+
+                await flowDynamic(mensaje);
+
+                setTimeout(() => {
+                    return gotoFlow(finalizarBienvenida);
+                }, 5000);
+                
+
+                
+
             }
             else if(respuesta === '3'){
                 await fallBack('Esta opción no está disponible aún');
