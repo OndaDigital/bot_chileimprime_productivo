@@ -34,7 +34,7 @@ module.exports = addKeyword(EVENTS.ACTION)
         });
 
     //Enviamos un mensaje a chatwoot para que la conversacion tenga contenido
-    mensaje = `Hola, me llame ${nombre} y necesito ayuda`;
+    mensaje = `Hola, me llamo ${nombre} y necesito ayuda`;
     await sendMessage(ACCOUNT_ID, id_conversacion, mensaje, 'incoming', true,"text" )
 
     
@@ -71,4 +71,6 @@ module.exports = addKeyword(EVENTS.ACTION)
 
     
 
+}).addAction(async (ctx, { state,  flowDynamic, gotoFlow}) => {
+    console.log("Flujo ejecutivo finalizado.");
 });

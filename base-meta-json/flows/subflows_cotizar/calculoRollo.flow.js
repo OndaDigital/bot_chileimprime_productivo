@@ -150,7 +150,9 @@ module.exports = addKeyword(EVENTS.ACTION)
             precioTotal,
             precioTotalConExtra,
             iva19porciento,
-            totalConIva
+            totalConIva,
+            extraDescription
+
         }));
 
         
