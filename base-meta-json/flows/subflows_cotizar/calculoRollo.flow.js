@@ -168,7 +168,8 @@ module.exports = addKeyword(EVENTS.ACTION)
       await new Promise(resolve => setTimeout(resolve, 5000));
 
       await flowDynamic(`✅ *Tu cotización ha sido cargada con éxito a nuestro sistema.*
-🚨 *Recuerda* que no está completa, todavía debes venir a la tienda con tu diseño o enviarlo por correo para finalizar la cotización.
+🚨 *Recuerda* que no está completa, todavía debes venir a la *tienda con tu diseño o enviarlo por correo* para finalizar la cotización.
+🚨 *Es Obligatorio* que al momento de venir a la tienda o de enviar el diseño al correo, *presentar la cotización* anterior.
 
 🏬 *Tienda:* Av. El Parrón 579, La Cisterna.
 ⏰ *Horario:* 
@@ -179,10 +180,9 @@ module.exports = addKeyword(EVENTS.ACTION)
       
 
      // Agregar espera de 2 segundos
-     await new Promise(resolve => setTimeout(resolve, 2000));
+     await new Promise(resolve => setTimeout(resolve, 10000));
 
-     await flowDynamic(`🖌️ Si tienes dudas acerca del diseño, puedes digitar la opción *4* del menú principal.
-❓ Si tienes otro tipo de dudas o preguntas, marca la opción *5* para hablar con un ejecutivo.`);
+     await flowDynamic(`❓ Si tienes dudas, escribe *hola* y marca la opcion 5 para hablar con un ejecutivo.`);
 
     
 })
@@ -199,23 +199,37 @@ function redondear(numero) {
 
 
 function generarDetallesCotizacion(data) {
-    return `🖨️ *DETALLES DE TU COTIZACIÓN* 🖨️
+    let mensaje = `🖨️ *DETALLES DE TU COTIZACIÓN* 🖨️\n\n`;
 
-    🔹 *Producto/Servicio:*
-    - Tipo de Servicio: ${data.servicio_seleccionado}
-    - Ancho del rollo: ${data.anchoSeleccionado} ${data.unidad_ancho}
-    - Altura: ${data.alturaIngresada} ${data.unidad_altura}
-    - Área total: ${redondear(data.anchoSeleccionado * data.alturaIngresada)} m2
-    - Extra: ${data.extraDescription} por ${numeroCLP(data.costoExtra)} el m2.
-    
-    🔹 *Desglose de Costos:*
-    - Precio por m2: ${numeroCLP(data.precioPorMetro)}
-    - Subtotal sin extras: ${numeroCLP(data.precioTotal)}
-    - Total extras: ${numeroCLP(data.anchoSeleccionado * data.alturaIngresada * data.costoExtra)}
-    - Subtotal con extras: ${numeroCLP(data.precioTotalConExtra)}
-    - IVA 19%: ${numeroCLP(data.iva19porciento)}
+    // Producto/Servicio
+    mensaje += `🔹 *Producto/Servicio:*\n`;
+    mensaje += `- Tipo de Servicio: ${data.servicio_seleccionado}\n`;
+    mensaje += `- Ancho del rollo: ${data.anchoSeleccionado} ${data.unidad_ancho}\n`;
+    mensaje += `- Altura: ${data.alturaIngresada} ${data.unidad_altura}\n`;
+    mensaje += `- Área total: ${redondear(data.anchoSeleccionado * data.alturaIngresada)} m2\n`;
 
-    *TOTAL A PAGAR:* ${numeroCLP(data.totalConIva)}
+    // Si hay extras, mostramos los detalles
+    if (data.extraDescription !== 'No') {
+        mensaje += `- Extra: ${data.extraDescription} por ${numeroCLP(data.costoExtra)} el m2.\n`;
+    }
+
+    // Desglose de Costos
+    mensaje += `\n🔹 *Desglose de Costos:*\n`;
+    mensaje += `- Precio por m2: ${numeroCLP(data.precioPorMetro)}\n`;
     
-    🕐 Esta cotización es válida por 24 horas.`;
+    if (data.extraDescription !== 'No') {
+        mensaje += `- Subtotal sin extras: ${numeroCLP(data.precioTotal)}\n`;
+        mensaje += `- Total extras: ${numeroCLP(data.anchoSeleccionado * data.alturaIngresada * data.costoExtra)}\n`;
+        mensaje += `- Subtotal con extras: ${numeroCLP(data.precioTotalConExtra)}\n`;
+    } else {
+        mensaje += `- Subtotal: ${numeroCLP(data.precioTotal)}\n`;
+    }
+
+    mensaje += `- IVA 19%: ${numeroCLP(data.iva19porciento)}\n\n`;
+
+    mensaje += `*TOTAL A PAGAR:* ${numeroCLP(data.totalConIva)}\n\n`;
+
+    mensaje += `🕐 Esta cotización es válida por 24 horas.`;
+
+    return mensaje;
 }
