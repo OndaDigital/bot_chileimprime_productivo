@@ -190,6 +190,36 @@ const listTeams = async () => {
     return teamList;
 };
 
+const getContactInfo = async (id) => {
+    if (!id || id === 0) {
+        console.error('ID de contacto no válido');
+        return;
+    }
+
+    const requestOptions = {
+        method: 'GET',
+        headers
+    };
+
+    try {
+        const response = await fetch(`${API_CHATWOOD}/api/v1/accounts/${ACCOUNT_ID}/contacts/${id}`, requestOptions);
+        if (!response.ok) {
+            console.error(`Error: ${response.status} - ${response.statusText}`);
+            return;
+        }
+
+        const data = await response.json();
+        if (data && data.payload && data.payload.contact) {
+            return data.payload.contact;
+        } else {
+            console.error('La respuesta de la API no tiene el formato esperado');
+        }
+    } catch (error) {
+        console.error('Error al intentar obtener la información del contacto:', error.message);
+    }
+};
 
 
-module.exports = { sendMessageChatWood, createContact, searchContact, listAgents, listTeams, createConversation, sendMessage };
+
+module.exports = { sendMessageChatWood, createContact, searchContact, listAgents, listTeams, createConversation, sendMessage,
+                getContactInfo};

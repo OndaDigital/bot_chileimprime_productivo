@@ -15,6 +15,9 @@ const flujoSubirPedido = require('./flows/subflows_cotizar/subirPedido.flow');
 const flujoEjecutivo = require('./flows/ejecutivoFlow');
 const ServerHttp = require('./http/index.js');
 
+const {getContactInfo, searchContact} = require('../services/chatwood')
+const INBOX_ID = process.env.INBOX_ID;
+const ACCOUNT_ID = process.env.ACCOUNT_ID;
 
 //Se inicia la conversacion con el correo
 const pedirCorreo = addKeyword(EVENTS.WELCOME).addAnswer("Hola, soy el asistente virtual de Chileimprime, para comenzar, *por favor ingresa tu correo electrónico*"
@@ -38,6 +41,13 @@ const pedirCorreo = addKeyword(EVENTS.WELCOME).addAnswer("Hola, soy el asistente
             numero_cliente: numero
         });
         console.log(`Email: ${email} - Nombre: ${nombre}`);
+
+        //Obtener informacion del contacto
+        const contactId = await searchContact(`+${numero}`);
+        const contactInfo = await getContactInfo(contactId);
+        if (contactInfo) {
+            console.log('Información del contacto:', contactInfo);
+        }
         await gotoFlow(flujoPrincipal);
     }
 

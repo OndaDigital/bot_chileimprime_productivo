@@ -20,9 +20,10 @@ module.exports = addKeyword(EVENTS.ACTION)
             '*Muchas gracias!! ahora escoge una opción del menú* \n',
             '👉 *1.* Iniciar una cotización ( *La forma más rapida* )',
             '👉 *2.* Horarios y dirección del local',
-            '👉 *3.* Consultar por el estado de un pedido',
+            '👉 *3.* Consultar el estado de mis últimos pedidos',
             '👉 *4.* Necesito ayuda, tengo dudas con el archivo o formato',
             '👉 *5.* Hablar con un *ejecutivo* (tiempo de respuesta de 1 a 2 horas)',
+            '👉 *6.* Cambiar correo y otros datos',
             '📌 Escribe *menu* en cualquier momento para volver a ver este menú ',
         ], 
     {delay:800, capture:true},async (ctx, { provider, flowDynamic, fallBack,gotoFlow}) => {
