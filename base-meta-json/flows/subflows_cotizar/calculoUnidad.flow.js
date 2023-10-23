@@ -20,11 +20,12 @@ module.exports = addKeyword(EVENTS.ACTION)
         return;
     }
 
-    await flowDynamic(`El producto *${servicio_seleccionado}* tiene un precio de $${precioPorUnidad} por unidad.
+    await flowDynamic(`El producto *${servicio_seleccionado}* tiene un precio de $${precioPorUnidad} por unidad 🏷️
 
-¿Deseas subir la cotización o quieres finalizar esta conversación?
-*A.* Sí (Agilizará tu presupuesto. Puedes enviarnos el diseño por correo o traerlo a la tienda después de subir la cotización).
-*B.* No (Finalizar conversación)
+¿Deseas *subir la cotización o quieres finalizar* esta conversación? 🤔
+
+*A.* Sí (Agilizará tu presupuesto. 🚀 Puedes enviarnos el diseño por correo o traerlo a la tienda después de subir la cotización).
+*B.* No (Finalizar conversación) 🛑
 `);
 
 await state.update({precioPorUnidad: precioPorUnidad});

@@ -29,9 +29,8 @@ module.exports = addKeyword(EVENTS.ACTION)
         try {
             // Obtiene solo los productos con stock
             const productNames = await googelSheet.obtenerNombreProductosConStock();
-            const rawRespuestaCliente = state.get('servicios_cliente');
-            const cleanedItem = cleanInput(rawRespuestaCliente.trim());
-            const matchedProducts = findBestMatches(cleanedItem, productNames);
+            const rawRespuestaCliente = state.get('servicios_cliente');            
+            const matchedProducts = findBestMatches(rawRespuestaCliente, productNames);
             
         
             if (matchedProducts.length === 1) {
@@ -91,22 +90,6 @@ module.exports = addKeyword(EVENTS.ACTION)
         }
     })
     
-    
-    
-
-    
-    
-    function cleanInput(input) {
-        // Lista de palabras o frases para eliminar
-        const toRemove = ["con ojetillos", "y ojetillos", "con sellado", "y sellado", "con", "y"];
-    
-        let cleanedInput = input.toLowerCase();
-        toRemove.forEach(phrase => {
-            cleanedInput = cleanedInput.replace(new RegExp(phrase, 'gi'), '');
-        });
-    
-        return cleanedInput.trim();
-    }
     
     function findBestMatches(input, productNames) {
         return productNames.filter(product => product.toLowerCase().includes(input));

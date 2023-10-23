@@ -32,16 +32,17 @@ const verificarUsuario = addKeyword(EVENTS.WELCOME).addAnswer("Hola, soy SofIA, 
         console.log('Información del contacto:', contactInfo);
         console.log('Correo del contacto:', email_chatwoot);
         flowDynamic(`Hola ${nombre}, 
-te informamos que el correo electrónico que tenemos registrado para ti es: *${email_chatwoot}*. 
-Si deseas cambiarlo, selecciona la opción 6 en el menú principal.`);
+te informamos que el correo electrónico que tenemos registrado para ti es: *${email_chatwoot}*.
+
+Si deseas cambiarlo, *selecciona la opción 6* en el menú principal.`);
 
         await state.update({
             email: email_chatwoot,
             nombre: nombre,
             numero_cliente: numero
         });
-        // Agregar espera de 4 segundos antes de pasar al siguiente flujo
-        await new Promise(resolve => setTimeout(resolve, 4000));
+        // Agregar espera de 7 segundos antes de pasar al siguiente flujo
+        await new Promise(resolve => setTimeout(resolve, 7000));
         await gotoFlow(flujoPrincipal);
     }
     else{
