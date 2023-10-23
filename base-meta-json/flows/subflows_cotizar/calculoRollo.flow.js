@@ -128,6 +128,10 @@ module.exports = addKeyword(EVENTS.ACTION)
 
     if (calculos[opcionSeleccionada]) {
         await calculos[opcionSeleccionada]();
+
+        //Preparamos los datos para exportar al excel.
+        const areaTotal = redondear(anchoSeleccionado * alturaIngresada);
+        const DTE = "Boleta";
         
         const precioTotalConExtra = precioTotal + (anchoSeleccionado * alturaIngresada * costoExtra);
         const iva19porciento = precioTotalConExtra * 0.19;
@@ -136,8 +140,21 @@ module.exports = addKeyword(EVENTS.ACTION)
         await state.update({ 
             extra: extraDescription, 
             extra_precio: costoExtra, 
-            precioTotalConExtra: precioTotalConExtra 
+            precioTotalConExtra: precioTotalConExtra,
+            areaTotal: areaTotal, 
+            DTE: DTE,
+            totalConIva: totalConIva,
         });
+
+        //Subimos el pedido a google sheet
+        const pedido = state.getMyState();
+        // Agrega el pedido a la hoja:
+        const nuevoID =  googelSheet.agregarPedido(pedido).then(() => {
+            console.log("Pedido agregado con éxito");
+        }).catch(err => {
+            console.error("Hubo un error al agregar el pedido:", err);
+        });
+
 
         await flowDynamic(generarDetallesCotizacion({
             servicio_seleccionado,
@@ -151,7 +168,8 @@ module.exports = addKeyword(EVENTS.ACTION)
             precioTotalConExtra,
             iva19porciento,
             totalConIva,
-            extraDescription
+            extraDescription,
+            nuevoID
 
         }));
 
@@ -169,7 +187,7 @@ module.exports = addKeyword(EVENTS.ACTION)
 
       await flowDynamic(`✅ *Tu cotización ha sido cargada con éxito a nuestro sistema.*
 🚨 *Recuerda* que no está completa, todavía debes venir a la *tienda con tu diseño o enviarlo por correo* para finalizar la cotización.
-🚨 *Es Obligatorio* que al momento de venir a la tienda o de enviar el diseño al correo, *presentar la cotización* anterior.
+🚨 *Es Obligatorio presentar la cotización* anterior al momento de venir a la tienda o de enviar el diseño al correo.
 
 🏬 *Tienda:* Av. El Parrón 579, La Cisterna.
 ⏰ *Horario:* 
@@ -199,7 +217,7 @@ function redondear(numero) {
 
 
 function generarDetallesCotizacion(data) {
-    let mensaje = `🖨️ *DETALLES DE TU COTIZACIÓN* 🖨️\n\n`;
+    let mensaje = `🖨️ * COTIZACIÓN ${data.nuevoID} * 🖨️\n\n`;
 
     // Producto/Servicio
     mensaje += `🔹 *Producto/Servicio:*\n`;

@@ -67,21 +67,34 @@ class GoogleSheetPedidos {
         // Rellenando con la información proporcionada y valores por defecto
         await sheet.addRow({
             'ID': nuevoID,
+            'Número servicios' : 1,
+            'Medio de pago' : '',
             'Fecha de ingreso': new Date().toLocaleString('es-CL', { hour12: true, dateStyle: 'short', timeStyle: 'short' }),
+            'Fecha modificación': new Date().toLocaleString('es-CL', { hour12: true, dateStyle: 'short', timeStyle: 'short' }),
             'Cajero': 'BOT',
             'Nombre de Servicio': state.servicio_seleccionado,
-            'Ancho': state.anchoSeleccionado,
-            'Altura': state.alturaSeleccionada,
+            'Cant.': 1,
+            'Medidas' : `${state.anchoSeleccionado} x ${state.alturaSeleccionada}`,
+            'Área' : state.areaTotal,
             'Precio por m2': state.precioPorMetro,
-            'Cantidad': `${state.anchoSeleccionado * state.alturaSeleccionada} m2`,
-            'Subtotal': state.precioTotal,
+            'Precio base' : state.precioTotal,            
             'Nombre de la Terminación': state.extra,
             'Precio de la Terminación': state.extra_precio,
-            'IVA': (state.precioTotalConExtra * 0.19),  // Asumiendo IVA de 19%
-            'Total': state.precioTotalConExtra,
-            // Puedes agregar más campos aquí conforme los tengas
+            'DTE' : state.DTE,
+            'NETO / Subtotal': state.precioTotalConExtra,
+            'TOTAL + IVA' : state.totalConIva,
+            'Nombre' : state.nombre,
+            'Teléfono' : state.numero_cliente,
+            'Correo' : email,
+            'Razón social' : '',
+            'Comuna facturacion' : '',
+            'Giro' : '',
+            'Teléfono facturación' : '',
+            'ESTADEL PROYECTO' : 'Sin iniciar',
+            // Se iran agregando mas campos conforme sea necesario
         });
         console.log("Pedido agregado con éxito.");
+        return nuevoID;
     }
 }
 
