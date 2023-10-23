@@ -24,25 +24,31 @@ class GoogleSheetPedidos {
     this.doc = new GoogleSpreadsheet(id, this.jwtFromEnv);
   }
 
-    // Método para obtener el último ID
-    async obtenerUltimoID() {
-        await this.doc.loadInfo();
-        const sheet = this.doc.sheetsByTitle["Pedidos_whatsapp"];  // Cargando la hoja "Pedidos_whatsapp"
-        await sheet.loadCells('A3:A1000');  
-        
-        let ultimoID = "WA-00001";  // Valor por defecto
-        for (let i = 2; i < 1000; i++) {  // Comienza desde la fila 3
-            const cell = sheet.getCell(i, 0);  // Columna A
-            if (cell.value) {
-                ultimoID = cell.value;
-            } else {
-                break;
+  // Método para obtener el último ID
+  async obtenerUltimoID() {
+    await this.doc.loadInfo();
+    const sheet = this.doc.sheetsByTitle["Pedidos_whatsapp"];  // Cargando la hoja "Pedidos_whatsapp"
+    await sheet.loadCells('A3:A1000');  
+    
+    let ultimoNumero = 0;  // Valor por defecto
+    for (let i = 2; i < 1000; i++) {  // Comienza desde la fila 3
+        const cell = sheet.getCell(i, 0);  // Columna A
+        if (cell.value) {
+            const partes = cell.value.split("-");
+            if (partes.length === 2 && partes[0] === "WA") {
+                const numeroExtraido = parseInt(partes[1]);
+                if (!isNaN(numeroExtraido) && numeroExtraido > ultimoNumero) {
+                    ultimoNumero = numeroExtraido;
+                }
             }
+        } else {
+            break;
         }
-
-        const numero = parseInt(ultimoID.split("-")[1]) + 1;
-        return `WA-${String(numero).padStart(5, '0')}`;  // Retornar el siguiente ID
     }
+
+    return `WA-${ultimoNumero + 1}`;  // Retornar el siguiente ID
+  }
+
 
     // Método para agregar un nuevo pedido
     // Método para agregar un nuevo pedido
