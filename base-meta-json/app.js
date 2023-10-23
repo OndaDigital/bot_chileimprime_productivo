@@ -23,25 +23,35 @@ const verificarUsuario = addKeyword(EVENTS.WELCOME).addAnswer("Hola, soy SofIA, 
     {capture:true},async (ctx, {state, provider, flowDynamic, fallBack, gotoFlow}) => {
     
     const numero = ctx.from;
+    const nombre = ctx.pushName;
     //Obtener informacion del contacto
     const contactId = await searchContact(`+${numero}`);
     const contactInfo = await getContactInfo(contactId);
     if (contactInfo) {
+        const email_chatwoot = contactInfo.email;
         console.log('Información del contacto:', contactInfo);
-        console.log('Correo del contacto:', contactInfo.email);
-        flowDynamic(`Hola ${contactInfo.name}, solo para que lo sepas,el correo que tenemos registrado para ti es: ${contactInfo.email}
-        si deseas cambiarlo, marca la opción *6* del menú principal`);
+        console.log('Correo del contacto:', email_chatwoot);
+        flowDynamic(`Hola ${nombre}, 
+te informamos que el correo electrónico que tenemos registrado para ti es: *${email_chatwoot}*. 
+Si deseas cambiarlo, selecciona la opción 6 en el menú principal.`);
+
+        await state.update({
+            email: email_chatwoot,
+            nombre: nombre,
+            numero_cliente: numero
+        });
+        // Agregar espera de 4 segundos antes de pasar al siguiente flujo
+        await new Promise(resolve => setTimeout(resolve, 4000));
         await gotoFlow(flujoPrincipal);
     }
     else{
         console.log('No se encontró información del contacto');
-        flowDynamic(`Hola, no tenemos información de tu correo, por favor ingresa tu correo para continuar`);
         await gotoFlow(pedirCorreo);
     }
 });
 
 //Se inicia la conversacion con el correo
-const pedirCorreo = addKeyword(EVENTS.ACTION).addAnswer("Hola, no tenemos información de tu correo, *por favor ingresa tu correo para continuar*"
+const pedirCorreo = addKeyword(EVENTS.ACTION).addAnswer("¡Qué alegría tenerte por aquí por primera vez! Por favor, *ingresa tu correo electrónico* para que podamos crearte una cuenta y empezar 😊"
 ,{capture:true}, async (ctx, {state, provider, flowDynamic, fallBack, gotoFlow}) => {
     
     const email = ctx.body;
@@ -62,6 +72,9 @@ const pedirCorreo = addKeyword(EVENTS.ACTION).addAnswer("Hola, no tenemos inform
             numero_cliente: numero
         });
         console.log(`Email: ${email} - Nombre: ${nombre}`);
+
+        // Agregar espera de 4 segundos antes de pasar al siguiente flujo
+        await new Promise(resolve => setTimeout(resolve, 4000));
 
         await gotoFlow(flujoPrincipal);
     }

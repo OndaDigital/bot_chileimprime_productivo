@@ -218,7 +218,7 @@ function redondear(numero) {
 
 
 function generarDetallesCotizacion(data) {
-    let mensaje = `🖨️ * COTIZACIÓN ${data.nuevoID} * 🖨️\n\n`;
+    let mensaje = `🖨️ *COTIZACIÓN ${data.nuevoID}* 🖨️\n\n`;
 
     // Producto/Servicio
     mensaje += `🔹 *Producto/Servicio:*\n`;
