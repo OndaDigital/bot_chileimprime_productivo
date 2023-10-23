@@ -67,7 +67,8 @@ await state.update({precioPorUnidad: precioPorUnidad});
 - Precio por m2: ${numeroCLP(precio_por_unidad)}
 - IVA 19%: ${numeroCLP(precio_por_unidad * 0.19)}
 
-TOTAL A PAGAR: ${numeroCLP(precio_por_unidad * 1.19) } 
+*TOTAL A PAGAR:* ${numeroCLP(precio_por_unidad * 1.19) } 
+
 🚨 El precio anterior es solo referencial, para recibir la confirmacion por favor envia tu diseño a nuestro correo o traelo a la tienda.
 🕐 Esta cotización es válida por 24 horas`);
 
