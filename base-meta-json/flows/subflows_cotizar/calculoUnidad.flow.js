@@ -20,7 +20,7 @@ module.exports = addKeyword(EVENTS.ACTION)
         return;
     }
 
-    await flowDynamic(`El producto *${servicio_seleccionado}* tiene un precio de $${precioPorUnidad} por unidad 🏷️
+    await flowDynamic(`El producto *${servicio_seleccionado}* tiene un precio de ${numeroCLP(precioPorUnidad)} por unidad 🏷️
 
 ¿Deseas *subir la cotización o quieres finalizar* esta conversación? 🤔
 
