@@ -41,8 +41,8 @@ Si deseas cambiarlo, *selecciona la opción 6* en el menú principal.`);
             nombre: nombre,
             numero_cliente: numero
         });
-        // Agregar espera de 7 segundos antes de pasar al siguiente flujo
-        await new Promise(resolve => setTimeout(resolve, 7000));
+        // Agregar espera de 5 segundos antes de pasar al siguiente flujo
+        await new Promise(resolve => setTimeout(resolve, 5000));
         await gotoFlow(flujoPrincipal);
     }
     else{

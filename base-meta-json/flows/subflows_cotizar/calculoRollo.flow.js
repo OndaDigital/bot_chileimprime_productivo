@@ -183,7 +183,7 @@ module.exports = addKeyword(EVENTS.ACTION)
 })
 .addAction(async(ctx,{flowDynamic, state, fallBack, gotoFlow}) => {
 
-      // Agregar espera de 10 segundos
+      // Agregar espera de 5 segundos
       await new Promise(resolve => setTimeout(resolve, 5000));
 
       await flowDynamic(`✅ *Tu cotización ha sido cargada con éxito a nuestro sistema.*

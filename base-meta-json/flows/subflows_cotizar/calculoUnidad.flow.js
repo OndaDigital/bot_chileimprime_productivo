@@ -58,20 +58,20 @@ await state.update({precioPorUnidad: precioPorUnidad});
         const pedido = state.getMyState();
         // Agrega el pedido a la hoja:
         const nuevoID = await googleSheetPedidos.agregarPedido(pedido);
-        flowDynamic(`🖨 COTIZACIÓN ${nuevoID} 🖨
+        flowDynamic(`🖨 *COTIZACIÓN ${nuevoID}* 🖨
 
 🔹 Producto/Servicio: 
 - Tipo de Servicio: ${servicio_seleccionado}
 
 🔹 Desglose de Costos:
-- Precio por m2: ${precio_por_unidad}
-- IVA 19%: ${precio_por_unidad * 0.19}
+- Precio por m2: ${numeroCLP(precio_por_unidad)}
+- IVA 19%: ${numeroCLP(precio_por_unidad * 0.19)}
 
-TOTAL A PAGAR: ${precio_por_unidad * 1.19 } 
+TOTAL A PAGAR: ${numeroCLP(precio_por_unidad * 1.19) } 
 🚨 El precio anterior es solo referencial, para recibir la confirmacion por favor envia tu diseño a nuestro correo o traelo a la tienda.
 🕐 Esta cotización es válida por 24 horas`);
 
-  // Agregar espera de 10 segundos
+  // Agregar espera de 5 segundos
   await new Promise(resolve => setTimeout(resolve, 5000));
 
   await flowDynamic(`✅ *Tu cotización ha sido cargada con éxito a nuestro sistema.*
@@ -100,3 +100,7 @@ TOTAL A PAGAR: ${precio_por_unidad * 1.19 }
         await fallBack("Debes introducir una letra valida (A o B). Por favor, inténtalo de nuevo.");
     }
 })
+
+function numeroCLP(numbero) {
+    return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(numbero).replace("CLP", "").trim();
+}
