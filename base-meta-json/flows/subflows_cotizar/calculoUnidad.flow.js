@@ -1,5 +1,5 @@
 const GoogleSheetService = require("../../services/GoogleSheetService");
-const googleSheetPedidos = require("../../services/GoogleSheetPedidos");
+const googleSheetPedido = require("../../services/GoogleSheetPedidos");
 
 const { addKeyword, EVENTS } = require('@bot-whatsapp/bot');
 
@@ -7,7 +7,7 @@ const googelSheet = new GoogleSheetService(
     "1zFKxknp8KJq5UgSDnNG9awr-HLEwZIdbb6jZlQkuwtk"
 );
 
-const googleSheetPedidos = new GoogleSheetPedidos(
+const googleSheetPedidos = new googleSheetPedido(
     "1zFKxknp8KJq5UgSDnNG9awr-HLEwZIdbb6jZlQkuwtk"
   );
 
