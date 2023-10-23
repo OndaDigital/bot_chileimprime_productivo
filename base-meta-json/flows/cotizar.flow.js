@@ -91,7 +91,20 @@ module.exports = addKeyword(EVENTS.ACTION)
     })
     
     
+    // Función para limpiar y normalizar las cadenas de texto
+    function cleanString(str) {
+        return str.trim().replace(/[^a-zA-Z0-9 ]/g, "").toLowerCase();
+    }
+    
+    //  Función para encontrar las mejores coincidencias
     function findBestMatches(input, productNames) {
-        return productNames.filter(product => product.toLowerCase().includes(input));
+        const cleanedInput = cleanString(input);
+    
+        const matches = productNames.filter(product => {
+            const cleanedProduct = cleanString(product);
+            return cleanedProduct.includes(cleanedInput);
+        });
+    
+        return matches;
     }
     
