@@ -187,8 +187,8 @@ module.exports = addKeyword(EVENTS.ACTION)
       await new Promise(resolve => setTimeout(resolve, 5000));
 
       await flowDynamic(`✅ *Tu cotización ha sido cargada con éxito a nuestro sistema.*
-🚨 *Recuerda* que no está completa, todavía debes venir a la *tienda con tu diseño o enviarlo por correo* para finalizar la cotización.
-🚨 *Es Obligatorio presentar la cotización* anterior al momento de venir a la tienda o de enviar el diseño al correo.
+🚨 *Recuerda* que no está completa, todavía debes venir a la *tienda con tu diseño o enviarlo por correo* para finalizar la cotización, en el proceso puedes agregar mas servicios o editar el actual.
+🚨 *Es Obligatorio presentar la cotización* anterior al momento enviar el diseño.
 
 🏬 *Tienda:* Av. El Parrón 579, La Cisterna.
 ⏰ *Horario:* 

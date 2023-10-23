@@ -17,7 +17,7 @@ const finalizarBienvenida = addKeyword(EVENTS.ACTION).addAnswer("Gracias por esc
 module.exports = addKeyword(EVENTS.ACTION)
     .addAnswer(
         [
-            '*Muchas gracias!! ahora escoge una opción del menú* \n',
+            '*Por favor, selecciona una opción del menú* \n',
             '👉 *1.* Iniciar una cotización ( *La forma más rapida* )',
             '👉 *2.* Horarios y dirección del local',
             '👉 *3.* Consultar el estado de mis últimos pedidos',
