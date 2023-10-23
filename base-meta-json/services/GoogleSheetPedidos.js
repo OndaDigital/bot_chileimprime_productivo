@@ -85,7 +85,7 @@ class GoogleSheetPedidos {
             'TOTAL + IVA' : state.totalConIva,
             'Nombre' : state.nombre,
             'Teléfono' : state.numero_cliente,
-            'Correo' : email,
+            'Correo' : state.email,
             'Razón social' : '',
             'Comuna facturacion' : '',
             'Giro' : '',
