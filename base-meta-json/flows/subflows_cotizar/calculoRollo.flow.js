@@ -5,6 +5,11 @@ const {addKeyword, EVENTS} = require("@bot-whatsapp/bot");
 const googelSheet = new GoogleSheetService(
     "1zFKxknp8KJq5UgSDnNG9awr-HLEwZIdbb6jZlQkuwtk"
   );
+
+  const googleSheetPedidos = new GoogleSheetPedidos(
+    "1zFKxknp8KJq5UgSDnNG9awr-HLEwZIdbb6jZlQkuwtk"
+  );
+
   const LETRAS = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "Ñ", "O", "P", "Q"]; // y así sucesivamente
 const flujoSubirPedido = require('./subirPedido.flow');
 
@@ -149,7 +154,7 @@ module.exports = addKeyword(EVENTS.ACTION)
         //Subimos el pedido a google sheet
         const pedido = state.getMyState();
         // Agrega el pedido a la hoja:
-        const nuevoID =  googelSheet.agregarPedido(pedido).then(() => {
+        const nuevoID =  googleSheetPedidos.agregarPedido(pedido).then(() => {
             console.log("Pedido agregado con éxito");
         }).catch(err => {
             console.error("Hubo un error al agregar el pedido:", err);
