@@ -85,6 +85,8 @@ const searchContact = async (query) => {
 
 
 const createConversation = async (source_id, inbox_id, contact_id, status = 'open', assignee_id, team_id, additional_attributes = {}, custom_attributes = {}) => {
+    console.log("Iniciando creación de conversación...");
+
     const body = JSON.stringify({
         source_id,
         inbox_id,
@@ -96,25 +98,43 @@ const createConversation = async (source_id, inbox_id, contact_id, status = 'ope
         team_id
     });
 
+    console.log("Cuerpo de la solicitud:", body);
+
     const requestOptions = {
         method: 'POST',
         headers,
         body
     };
 
-    const dataRaw = await fetch(
-        `${API_CHATWOOD}/api/v1/accounts/${ACCOUNT_ID}/conversations`,
-        requestOptions
-    );
-    
-    const data = await dataRaw.json();
+    console.log("Opciones de la solicitud:", requestOptions);
+
+    let dataRaw;
+    try {
+        dataRaw = await fetch(`${API_CHATWOOD}/api/v1/accounts/${ACCOUNT_ID}/conversations`, requestOptions);
+        console.log("Respuesta cruda recibida:", dataRaw);
+    } catch (error) {
+        console.error("Error al realizar la solicitud:", error);
+        throw new Error('Error al realizar la solicitud');
+    }
+
+    let data;
+    try {
+        data = await dataRaw.json();
+        console.log("Datos JSON obtenidos de la respuesta:", data);
+    } catch (error) {
+        console.error("Error al analizar la respuesta como JSON:", error);
+        throw new Error('Error al analizar la respuesta como JSON');
+    }
 
     if (dataRaw.status !== 200) {
+        console.error("Error al crear la conversación, estado:", dataRaw.status);
         throw new Error('Error al crear la conversación');
     }
 
+    console.log("Conversación creada con éxito, ID:", data.id);
     return data.id; // Devuelve el ID de la conversación creada
 };
+
 
 
 
