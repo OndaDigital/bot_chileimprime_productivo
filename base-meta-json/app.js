@@ -15,7 +15,7 @@ const flujoSubirPedido = require('./flows/subflows_cotizar/subirPedido.flow');
 const flujoEjecutivo = require('./flows/ejecutivoFlow');
 const ServerHttp = require('./http/index.js');
 
-const {getContactInfo, searchContact} = require('./services/chatwood')
+const {getContactInfo, searchContact, createContact} = require('./services/chatwood')
 const INBOX_ID = process.env.INBOX_ID;
 const ACCOUNT_ID = process.env.ACCOUNT_ID;
 
