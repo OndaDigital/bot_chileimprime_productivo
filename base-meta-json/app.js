@@ -19,8 +19,10 @@ const {getContactInfo, searchContact} = require('./services/chatwood')
 const INBOX_ID = process.env.INBOX_ID;
 const ACCOUNT_ID = process.env.ACCOUNT_ID;
 
-const verificarUsuario = addKeyword(EVENTS.WELCOME).addAnswer("Hola, soy SofIA, el asistente virtual de Chileimprime, dame un momento mientras verifico tu información",
-    async (ctx, {state, provider, flowDynamic, fallBack, gotoFlow}) => {
+const verificarUsuario = addKeyword(EVENTS.WELCOME).addAnswer("Hola, soy SofIA, el asistente virtual de Chileimprime, por favor *escribe cualquier cosa* para continuar",
+    {capture:true},async (ctx, {state, provider, flowDynamic, fallBack, gotoFlow}) => {
+    
+    const numero = ctx.from;
     //Obtener informacion del contacto
     const contactId = await searchContact(`+${numero}`);
     const contactInfo = await getContactInfo(contactId);
