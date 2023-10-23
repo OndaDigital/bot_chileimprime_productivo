@@ -47,6 +47,7 @@ class GoogleSheetPedidos {
     // Método para agregar un nuevo pedido
     // Método para agregar un nuevo pedido
     async agregarPedido(state) {
+      try{
         console.log("Cargando información del documento...");
         await this.doc.loadInfo();
         console.log("Información cargada.");
@@ -72,14 +73,14 @@ class GoogleSheetPedidos {
             'Fecha de ingreso': new Date().toLocaleString('es-CL', { hour12: true, dateStyle: 'short', timeStyle: 'short' }),
             'Fecha modificación': new Date().toLocaleString('es-CL', { hour12: true, dateStyle: 'short', timeStyle: 'short' }),
             'Cajero': 'BOT',
-            'Nombre de Servicio': state.servicio_seleccionado,
+            'Nombre del servicio': state.servicio_seleccionado,
             'Cant.': 1,
             'Medidas' : `${state.anchoSeleccionado} x ${state.alturaSeleccionada}`,
             'Área' : state.areaTotal,
             'Precio por m2': state.precioPorMetro,
             'Precio base' : state.precioTotal,            
-            'Nombre de la Terminación': state.extra,
-            'Precio de la Terminación': state.extra_precio,
+            'Tipo de Terminación': state.extra,
+            'Precio de Terminación/m2': state.extra_precio,
             'DTE' : state.DTE,
             'NETO / Subtotal': state.precioTotalConExtra,
             'TOTAL + IVA' : state.totalConIva,
@@ -95,6 +96,11 @@ class GoogleSheetPedidos {
         });
         console.log("Pedido agregado con éxito.");
         return nuevoID;
+      }
+      catch (err) {        
+        console.error("Error al agregar el pedido:", err);
+        return "Error al agregar el pedido";
+      }
     }
 }
 

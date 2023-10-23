@@ -155,12 +155,7 @@ module.exports = addKeyword(EVENTS.ACTION)
         //Subimos el pedido a google sheet
         const pedido = state.getMyState();
         // Agrega el pedido a la hoja:
-        const nuevoID =  googleSheetPedidos.agregarPedido(pedido).then(() => {
-            console.log("Pedido agregado con éxito");
-        }).catch(err => {
-            console.error("Hubo un error al agregar el pedido:", err);
-        });
-
+        const nuevoID = await googleSheetPedidos.agregarPedido(pedido);
 
         await flowDynamic(generarDetallesCotizacion({
             servicio_seleccionado,
