@@ -209,6 +209,8 @@ const getContactInfo = async (id) => {
         }
 
         const data = await response.json();
+        console.log('Respuesta de la API:', data); // Imprime la respuesta completa
+
         if (data && data.payload && data.payload.contact) {
             return data.payload.contact;
         } else {
