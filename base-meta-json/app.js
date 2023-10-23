@@ -66,6 +66,10 @@ const pedirCorreo = addKeyword(EVENTS.ACTION).addAnswer("¡Qué alegría tenerte
         await fallBack("Correo inválido, por favor inténtelo de nuevo. Debe ser un correo real y que estes usando actualmente para que podamos identificarte");
     }
     else{
+        const numeroConSigno = `+${numero}`;
+        /* Vamos a crear un contacto con los datos proporcionados */
+        await createContact(numeroConSigno, nombre, email);
+
         await state.update({
             email: email,
             nombre: nombre,
