@@ -1,4 +1,5 @@
 const GoogleSheetService = require( "../../services/GoogleSheetService");
+const GoogleSheetPedidos = require('../../services/GoogleSheetPedidos');
 
 const {addKeyword, EVENTS} = require("@bot-whatsapp/bot");
 
