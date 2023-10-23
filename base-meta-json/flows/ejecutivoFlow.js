@@ -18,19 +18,26 @@ module.exports = addKeyword(EVENTS.ACTION)
     const id_agente = 84679;
     const id_team = 4044;
 
+
+
+    //Creamos un nuevo contacto, si existe, devuelve 0, sino devuelve el ID > 0
+    let id_contacto = await createContact(numeroConSigno, nombre, email);
+
     //Log:
     console.log(`\n******************************\n`);
     console.log("Número con signo: ", numeroConSigno);
     console.log("ID del contacto inicial: ", id_contacto);
     console.log(`\n******************************\n`);
 
-    //Creamos un nuevo contacto, si existe, devuelve 0, sino devuelve el ID > 0
-    let id_contacto = await createContact(numeroConSigno, nombre, email);
-    
     //Si el contacto existe, entonces lo buscamos y obtenemos su ID
     if(id_contacto == 0){
         id_contacto = await searchContact(numeroConSigno);
     }
+
+        //Log:
+        console.log(`\n******************************\n`);
+        console.log("ID del contacto despues del searchContact: ", id_contacto);
+        console.log(`\n******************************\n`);
 
     //Creamoos la nueva conversacion
     const id_conversacion = await createConversation(numeroConSigno, INBOX_ID, id_contacto, 'open', id_agente, id_team );
