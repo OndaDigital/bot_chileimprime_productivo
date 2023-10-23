@@ -17,6 +17,13 @@ module.exports = addKeyword(EVENTS.ACTION)
     const numeroConSigno = `+${numero_cliente}`; //Es lo que usaremos como source_id	
     const id_agente = 84679;
     const id_team = 4044;
+
+    //Log:
+    console.log(`\n******************************\n`);
+    console.log("Número con signo: ", numeroConSigno);
+    console.log("ID del contacto inicial: ", id_contacto);
+    console.log(`\n******************************\n`);
+
     //Creamos un nuevo contacto, si existe, devuelve 0, sino devuelve el ID > 0
     let id_contacto = await createContact(numeroConSigno, nombre, email);
     
