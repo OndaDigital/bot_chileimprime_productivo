@@ -209,10 +209,18 @@ const getContactInfo = async (id) => {
         }
 
         const data = await response.json();
-        console.log('Respuesta de la API:', data); // Imprime la respuesta completa
+        //console.log('Respuesta de la API:', data); // Imprime la respuesta completa
 
-        if (data && data.payload && data.payload.contact) {
-            return data.payload.contact;
+        if (data && data.payload) {
+            const contact = data.payload;
+            return {
+                email: contact.email || '',
+                id: contact.id || 0,
+                name: contact.name || '',
+                phone_number: contact.phone_number || '',
+                custom_attributes: contact.custom_attributes || {},
+                additional_attributes: contact.additional_attributes || {}
+            };
         } else {
             console.error('La respuesta de la API no tiene el formato esperado');
         }
