@@ -94,7 +94,7 @@ const main = async () => {
 
     const adapterProvider = createProvider(MetaProvider, {
         jwtToken: 'EAAOqAf57coUBO6ca3xDX7Jd59dLNWP1nIZCXYUrhGuFRJ6E9BETKakAf0jdpZCzXljTYlKLsZAa2ZBoxThRIahimSGa3l3ErQ14NyKMYzALrBpO1ncbOrbI4YYVgIOxkngzHvAQVXq2xR3oIIVNOXBzQCCtVv2qHQAFFZCSXlAnBGcarphLGgLympg4yTVI4u',
-        numberId: '133670906504632',
+        numberId: '145466428645032',
         verifyToken: 'agente',
         version: 'v16.0',
     })
