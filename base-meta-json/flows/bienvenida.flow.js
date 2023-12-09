@@ -68,7 +68,8 @@ const mensaje = `*Hola, a continuación te dejo los datos de la tienda* \n
                 await fallBack('Esta opción no está disponible aún');
             }
             else if(respuesta === '5'){
-                await gotoFlow(flujoEjecutivo);
+                //await gotoFlow(flujoEjecutivo);
+                await flowDynamic('Para contactar con un ejecutivo, por favor, clic en el siguiente numero y mandanos un mensaje: \n https://wa.me/56971089933');
             }
             else if(respuesta === 'menu'){
                 await flowDynamic('bienvenida');
